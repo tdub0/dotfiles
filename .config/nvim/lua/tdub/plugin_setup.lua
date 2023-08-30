@@ -17,11 +17,14 @@ pcall(require('telescope').load_extension, 'fzf')
 -- Configure Treesitter
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
+  modules = {},
+  sync_install = false,
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed
   auto_install = true,
+  ignore_install = {},
 
   highlight = {
     enable = true,
@@ -124,15 +127,34 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
+-- enable the following language servers
 local servers = {
   -- gopls = {},
-  -- pyright = {},
-
+  -- pylsp = {
+  --   pylsp = {
+  --     plugins = {
+  --       autopep8 = {
+  --         enabled = false,
+  --       },
+  --       pycodestyle = {
+  --         enabled = false,
+  --       },
+  --       pyflakes = {
+  --         enabled = false,
+  --       },
+  --       mccabe = {
+  --         enabled = false,
+  --       },
+  --       yapf = {
+  --         enable = false,
+  --       },
+  --       flake8 = {
+  --         maxLineLength = 100,
+  --         enabled = true,
+  --       },
+  --     }
+  --   }
+  -- },
   clangd = {},
   rust_analyzer = {},
   lua_ls = {
@@ -143,14 +165,14 @@ local servers = {
   },
 }
 
--- Setup neovim lua configuration
+-- setup neovim lua configuration
 require('neodev').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Ensure the servers above are installed
+-- ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
@@ -165,6 +187,16 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
     }
   end,
+}
+
+-- setup python lint / formatting
+local null_ls = require 'null-ls'
+
+null_ls.setup {
+  sources = {
+    null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.formatting.black,
+  },
 }
 
 -- nvim-cmp setup

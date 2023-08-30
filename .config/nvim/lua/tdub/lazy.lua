@@ -60,12 +60,19 @@ require('lazy').setup({
       -- Useful status updates for LSP
       {
         'j-hui/fidget.nvim',
-        tag = "legacy",
+        tag = 'legacy',
         opts = {}
       },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
+
+      {
+        'jose-elias-alvarez/null-ls.nvim',
+        dependencies = {
+          'nvim-lua/plenary.nvim'
+        },
+      },
     },
   },
 
@@ -174,7 +181,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    build = ":TSUpdate",
+    build = ':TSUpdate',
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart

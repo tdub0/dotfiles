@@ -77,7 +77,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])          -- just yank current link to 
 
 -- vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) -- :J: ?
 -- format file using lsp
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = '[f]ormat files' })
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = 'LSP: [f]ormat files' })
 
 -- Quickfix lists next and previous
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")

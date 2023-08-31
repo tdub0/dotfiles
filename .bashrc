@@ -28,7 +28,7 @@ export GOPATH
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-EDITOR=/usr/bin/vim
+EDITOR=/usr/bin/nvim
 export EDITOR
 
 # Run any shell script in ~/.bashrc.d to set up environment

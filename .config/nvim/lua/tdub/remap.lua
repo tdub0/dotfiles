@@ -89,10 +89,43 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- Keep as an example
--- vim.keymap.set("n", "<leader>vwm", function()
---   require("vim-with-me").StartVimWithMe()
--- end)
--- vim.keymap.set("n", "<leader>svwm", function()
---   require("vim-with-me").StopVimWithMe()
--- end)
+-- zen-mode maps
+vim.keymap.set("n", "<leader>zz", function()
+  require("zen-mode").setup {
+    window = {
+      width = 90,
+      options = {}
+    },
+  }
+  require("zen-mode").toggle()
+  vim.wo.wrap = false
+  vim.wo.number = true
+  vim.wo.rnu = true
+end)
+
+vim.keymap.set("n", "<leader>zZ", function()
+  require("zen-mode").setup {
+    window = {
+      width = 80,
+      options = {}
+    },
+  }
+  require("zen-mode").toggle()
+  vim.wo.wrap = false
+  vim.wo.number = true
+  vim.wo.rnu = true
+  vim.opt.colorcolumn = "0"
+end)
+
+-- undo tree
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+-- harpoon
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+vim.keymap.set("n", "<leader>a", mark.add_file)
+vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
+vim.keymap.set("n", "<C-j>", function() ui.nav_file(2) end)
+vim.keymap.set("n", "<C-k>", function() ui.nav_file(3) end)
+vim.keymap.set("n", "<C-l>", function() ui.nav_file(4) end)

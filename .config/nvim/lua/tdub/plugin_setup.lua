@@ -20,10 +20,11 @@ require('nvim-treesitter.configs').setup {
   modules = {},
   sync_install = false,
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'vimdoc', 'vim' },
+  ensure_installed = { 'astro', 'c', 'cpp', 'css', 'go', 'html', 'javascript', 'lua',
+    'markdown', 'python', 'rust', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed
-  auto_install = true,
+  auto_install = false,
   ignore_install = {},
 
   highlight = {
@@ -74,15 +75,6 @@ require('nvim-treesitter.configs').setup {
         ['[]'] = '@class.outer',
       },
     },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
   },
 }
 
@@ -129,15 +121,20 @@ end
 
 -- enable the following language servers
 local servers = {
+  astro = {},
   -- gopls = {},
   clangd = {},
   rust_analyzer = {},
   lua_ls = {
     Lua = {
-      workspace = { checkThirdParty = false },
+      completion = {
+        callSnippet = "Replace"
+      },
       telemetry = { enable = false },
+      workspace = { checkThirdParty = false },
     },
   },
+  tailwindcss = {},
 }
 
 -- setup neovim lua configuration
@@ -169,8 +166,13 @@ local null_ls = require 'null-ls'
 
 null_ls.setup {
   sources = {
-    null_ls.builtins.diagnostics.flake8.with({extra_args = {"--max-line-length","88"}}),
+    null_ls.builtins.diagnostics.flake8.with({
+      extra_args = { "--max-line-length", "88", "--extend-ignore", "E203", "--extend-select", "B9",
+        "--max-complexity", "10" }
+    }),
+    null_ls.builtins.formatting.isort.with({ extra_args = { "--profile", "black" } }),
     null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.prettierd.with({ extra_filetypes = { 'astro' } })
   },
 }
 
@@ -181,24 +183,28 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 luasnip.config.setup {}
 
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
+  },
+  window = {
+    completion = cmp.config.window.bordered()
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
     ['<Tab>'] = nil,
     ['<S-Tab>'] = nil,
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
   },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
-}
+})

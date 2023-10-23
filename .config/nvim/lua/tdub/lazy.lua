@@ -97,10 +97,13 @@ require('lazy').setup({
 
   -- Jellybeans
   {
-    'nanotech/jellybeans.vim',
+    'metalelf0/jellybeans-nvim',
+    dependencies = {
+      'rktjmp/lush.nvim',
+    },
     priority = 100,
     config = function()
-      vim.cmd.colorscheme 'jellybeans'
+      vim.cmd.colorscheme 'jellybeans-nvim'
     end,
   },
 
@@ -111,7 +114,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'jellybeans',
+        theme = 'everforest',
         component_separators = '|',
         section_separators = '',
       },
@@ -122,6 +125,7 @@ require('lazy').setup({
   {
     'lukas-reineke/indent-blankline.nvim',
     -- See `:help indent_blankline.txt`
+    version = "2.20.8",
     opts = {
       char = '┊',
       show_trailing_blankline_indent = false,

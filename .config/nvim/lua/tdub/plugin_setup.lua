@@ -121,7 +121,7 @@ end
 
 -- enable the following language servers
 local servers = {
-  astro = {},
+  -- astro = {},
   -- gopls = {},
   clangd = {},
   rust_analyzer = {},
@@ -134,7 +134,23 @@ local servers = {
       workspace = { checkThirdParty = false },
     },
   },
-  tailwindcss = {},
+  pylsp = {
+    pylsp = {
+      plugins = {
+        autopep8 = { enabled = false },
+        flake8 = { enabled = false },
+        mccabe = { enabled = false },
+        pycodestyle = { enabled = false },
+        pydocstyle = { enabled = false },
+        pyflakes = { enabled = false },
+        rope_autoimport = { enabled = false },
+        yapf = { enabled = false },
+        pylsp_mypy = { enabled = true },
+        jedi_completion = { fuzzy = true },
+      },
+    },
+  },
+  -- tailwindcss = {},
 }
 
 -- setup neovim lua configuration
@@ -172,7 +188,7 @@ null_ls.setup {
     }),
     null_ls.builtins.formatting.isort.with({ extra_args = { "--profile", "black" } }),
     null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.prettierd.with({ extra_filetypes = { 'astro' } })
+    -- null_ls.builtins.formatting.prettierd.with({ extra_filetypes = { 'astro' } })
   },
 }
 

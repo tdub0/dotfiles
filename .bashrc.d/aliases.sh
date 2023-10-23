@@ -1,5 +1,6 @@
 alias tmx='tmux new-session -s main'
 alias tmxa='tmux attach'
+alias vim='nvim'
 
 alias ls='ls --color'
 alias lsa='ls -a --color'

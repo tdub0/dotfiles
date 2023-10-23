@@ -93,7 +93,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>zz", function()
   require("zen-mode").setup {
     window = {
-      width = 90,
+      width = 120,
       options = {}
     },
   }
@@ -123,9 +123,9 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- harpoon
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
-vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<C-j>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<C-k>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<C-l>", function() ui.nav_file(4) end)
+vim.keymap.set("n", "<leader>ha", mark.add_file, {desc = '[h]arpoon - [a]dd file'})
+vim.keymap.set("n", "<leader>hm", ui.toggle_quick_menu, {desc = '[h]arpoon - [m]enu'})
+vim.keymap.set("n", "<leader>hh", function() ui.nav_file(1) end, {desc = '[h]arpoon - nav file [1]'})
+vim.keymap.set("n", "<leader>hj", function() ui.nav_file(2) end, {desc = '[h]arpoon - nav file [2]'})
+vim.keymap.set("n", "<leader>hk", function() ui.nav_file(3) end, {desc = '[h]arpoon - nav file [3]'})
+vim.keymap.set("n", "<leader>hl", function() ui.nav_file(4) end, {desc = '[h]arpoon - nav file [4]'})

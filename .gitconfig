@@ -34,5 +34,3 @@
     summary = true
 [include]
     path = .gitconfig.local
-[includeIf "gitdir:~"]
-    path = .gitconfig_personal.local

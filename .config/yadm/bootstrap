@@ -12,12 +12,10 @@ mkdir -p ~/.local/share
 # bash $_yadm_cfg_dir/nvim.sh
 # bash $_yadm_cfg_dir/tmux.sh
 # bash $_yadm_cfg_dir/rust.sh
-# bash $_yadm_cfg_dir/go.sh
+bash $_yadm_cfg_dir/go.sh
 # bash $_yadm_cfg_dir/pyenv.sh
 # bash $_yadm_cfg_dir/alacritty.sh
-# bash $_yadm_cfg_dir/nvm.sh
-# bash $_yadm_cfg_dir/plantuml.sh
-bash $_yadm_cfg_dir/jetbrainsmono.sh
+bash $_yadm_cfg_dir/jbm_font.sh
 
 # if [ "$(uname)" = "Linux" ]; then
 #     _distro_id=$(grep "^ID=" /etc/os-release | awk -F= '{print $2}')

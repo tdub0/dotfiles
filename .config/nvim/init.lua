@@ -1,2 +1,1 @@
-require("tdub")
-
+require("tdub.init")

@@ -49,9 +49,10 @@ local language_servers = {
   },
   pylsp = {
     pylsp = {
+      configurationSources = { "flake8" },
       plugins = {
         autopep8 = { enabled = false },
-        flake8 = { enabled = false },
+        flake8 = { enabled = true },
         mccabe = { enabled = false },
         pycodestyle = { enabled = false },
         pydocstyle = { enabled = false },

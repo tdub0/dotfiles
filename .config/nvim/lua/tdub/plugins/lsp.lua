@@ -52,7 +52,10 @@ local language_servers = {
       configurationSources = { "flake8" },
       plugins = {
         autopep8 = { enabled = false },
-        flake8 = { enabled = true },
+        flake8 = {
+          enabled = true,
+          config = "~/.config/flake8",
+        },
         mccabe = { enabled = false },
         pycodestyle = { enabled = false },
         pydocstyle = { enabled = false },

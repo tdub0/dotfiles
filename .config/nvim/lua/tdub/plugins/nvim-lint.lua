@@ -4,9 +4,18 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lint = require("lint")
+      -- TODO: figure out why flake8 no work through nvim-lint
+      -- local flake8 = lint.linters.flake8
+      -- flake8.args = {
+      --   "--max-line-length=88",
+      --   "--extend_ignore=E203",
+      --   "--max-complexity=10",
+      -- }
+
       lint.linters_by_ft = {
         markdown = { "markdownlint" },
         yaml = { "yamllint" },
+        -- python = { "flake8" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

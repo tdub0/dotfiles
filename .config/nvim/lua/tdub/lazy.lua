@@ -166,11 +166,4 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-
-  -- distraction-free coding to open current buffer in floating window
-  {
-    'folke/zen-mode.nvim',
-    opts = {
-    }
-  }
 })

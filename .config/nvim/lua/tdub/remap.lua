@@ -7,11 +7,10 @@ vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 -- Personal convenience mappings
 vim.keymap.set('n', '<leader>qa', ":qa!<CR>")                             -- force quit all windows
 vim.keymap.set('n', '<leader>qf', ":qa<CR>")                              -- force quit current window
-vim.keymap.set('n', '<leader>b', ":bd<CR>")                               -- delete current buffer
 vim.keymap.set('n', '<leader>wa', ":wa<CR>")                              -- write all buffers
 vim.keymap.set('n', '<leader>wt', ":Trim<CR>")                            -- run trim according to configuration
-vim.keymap.set('n', '<leader>ev', ":tabedit ~/.config/nvim/init.lua<CR>") -- write all buffers
-vim.keymap.set('n', '<leader>et', ":tabedit ~/.tmux.conf<CR>")            -- write all buffers
+-- vim.keymap.set('n', '<leader>ev', ":tabedit ~/.config/nvim/init.lua<CR>") -- write all buffers
+-- vim.keymap.set('n', '<leader>et', ":tabedit ~/.tmux.conf<CR>")            -- write all buffers
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -80,42 +79,14 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])          -- just yank current link to 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = 'LSP: [f]ormat files' })
 
 -- Quickfix lists next and previous
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Convenience search and replace current word under cursor
-vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
--- zen-mode maps
-vim.keymap.set("n", "<leader>zz", function()
-  require("zen-mode").setup {
-    window = {
-      width = 120,
-      options = {}
-    },
-  }
-  require("zen-mode").toggle()
-  vim.wo.wrap = false
-  vim.wo.number = true
-  vim.wo.rnu = true
-end)
-
-vim.keymap.set("n", "<leader>zZ", function()
-  require("zen-mode").setup {
-    window = {
-      width = 80,
-      options = {}
-    },
-  }
-  require("zen-mode").toggle()
-  vim.wo.wrap = false
-  vim.wo.number = true
-  vim.wo.rnu = true
-  vim.opt.colorcolumn = "0"
-end)
+-- vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- undo tree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
@@ -123,9 +94,9 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- harpoon
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>ha", mark.add_file, {desc = '[h]arpoon - [a]dd file'})
-vim.keymap.set("n", "<leader>hm", ui.toggle_quick_menu, {desc = '[h]arpoon - [m]enu'})
-vim.keymap.set("n", "<leader>hh", function() ui.nav_file(1) end, {desc = '[h]arpoon - nav file [1]'})
-vim.keymap.set("n", "<leader>hj", function() ui.nav_file(2) end, {desc = '[h]arpoon - nav file [2]'})
-vim.keymap.set("n", "<leader>hk", function() ui.nav_file(3) end, {desc = '[h]arpoon - nav file [3]'})
-vim.keymap.set("n", "<leader>hl", function() ui.nav_file(4) end, {desc = '[h]arpoon - nav file [4]'})
+vim.keymap.set("n", "<leader>a", mark.add_file, {desc = '[h]arpoon - [a]dd file'})
+vim.keymap.set("n", "<leader>m", ui.toggle_quick_menu, {desc = '[h]arpoon - [m]enu'})
+vim.keymap.set("n", "<leader>h", function() ui.nav_file(1) end, {desc = '[h]arpoon - nav file [1]'})
+vim.keymap.set("n", "<leader>j", function() ui.nav_file(2) end, {desc = '[h]arpoon - nav file [2]'})
+vim.keymap.set("n", "<leader>k", function() ui.nav_file(3) end, {desc = '[h]arpoon - nav file [3]'})
+vim.keymap.set("n", "<leader>l", function() ui.nav_file(4) end, {desc = '[h]arpoon - nav file [4]'})

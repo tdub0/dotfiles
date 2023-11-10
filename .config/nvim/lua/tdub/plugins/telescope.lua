@@ -6,6 +6,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
+    lazy = false,
     version = false, -- telescope did only one release, so use HEAD for now
     dependencies = {
       {
@@ -14,7 +15,7 @@ return {
           "nvim-telescope/telescope-fzf-native.nvim",
           build = "make",
         },
-        "nvim-tree/nvim-web-devicons",
+        "kyazdani42/nvim-web-devicons",
       },
     },
     opts = {},
@@ -26,8 +27,8 @@ return {
           path_display = { "truncate " },
           mappings = {
             i = {
-              ["<C-k>"] = actions.move_selection_previous,
-              ["<C-j>"] = actions.move_selection_next,
+              ["<C-p>"] = actions.move_selection_previous,
+              ["<C-n>"] = actions.move_selection_next,
               ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
               ["<C-u>"] = false,
               ["<C-d>"] = false,
@@ -50,14 +51,8 @@ return {
       )
       map("n", "<leader>sf", "<cmd>Telescope find_files<cr>", { desc = "[s]earch [f]iles" })
       map("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", { desc = "[s]earch [r]ecent" })
-      -- map("n",
-      --   "<leader>sgc",
-      --   "<cmd>Telescope git_commits<CR>",
-      --   { desc = "[s]earch [g]it [c]ommits" })
-      -- map("n",
-      --   "<leader>sgs",
-      --   "<cmd>Telescope git_status<CR>",
-      --   { desc = "[s]earch [g]it [s]tatus" })
+      map("n", "<leader>sgc", "<cmd>Telescope git_commits<CR>", { desc = "[s]earch [g]it [c]ommits" })
+      map("n", "<leader>sgs", "<cmd>Telescope git_status<CR>", { desc = "[s]earch [g]it [s]tatus" })
       map("n", '<leader>s"', "<cmd>Telescope registers<cr>", { desc = "[s]earch registers" })
       map("n", "<leader>sa", "<cmd>Telescope autocommands<cr>", { desc = "[s]earch [a]uto commands" })
       map("n", "<leader>s/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "[s]earch current buffer" })
@@ -65,7 +60,6 @@ return {
       map("n", "<leader>sC", "<cmd>Telescope commands<cr>", { desc = "[s]earch [C]ommands" })
       map("n", "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", { desc = "[s]earch buffer [d]iagnostics" })
       map("n", "<leader>sD", "<cmd>Telescope diagnostics<cr>", { desc = "[s]earch workspace [d]iagnostics" })
-      map("n", "<leader>sg", "<cmd>Telescope live_grep<cr>", { desc = "[s]earch by [g]rep" })
       map("n", "<leader>sh", "<cmd>Telescope help_tags<cr>", { desc = "[s]earch [h]elp" })
       map("n", "<leader>sH", "<cmd>Telescope highlights<cr>", { desc = "[s]earch [H]ighlight Groups" })
       map("n", "<leader>sk", "<cmd>Telescope keymaps<cr>", { desc = "[s]earch [k]ey maps" })

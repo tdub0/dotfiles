@@ -15,6 +15,7 @@ return {
         ["<leader>c"] = { name = "+code" },
         ["<leader>q"] = { name = "+quit/session" },
         ["<leader>s"] = { name = "+search" },
+        ["<leader>sg"] = { name = "+git" },
         ["<leader>u"] = { name = "+undo/ui" },
         ["<leader>w"] = { name = "+windows" },
         ["<leader>x"] = { name = "+quickfix" },

@@ -15,7 +15,7 @@ return {
       vim.g.loaded_netrwPlugin = 1
 
       require("lir").setup({
-        show_hidden_files = false,
+        show_hidden_files = true,
         ignore = {},
         devicons = {
           enable = true,
@@ -78,7 +78,7 @@ return {
       map("n", "<leader>pv", ":lua require('lir.float').toggle()<CR>", { desc = "toggle explorer" })
       map("n", "<leader>et", ":lua require('lir.float').toggle()<CR>", { desc = "[e]xplorer [t]oggle" })
       map("n", "<leader>ei", ":lua require('lir.float').init()<CR>", { desc = "[e]xplorer [i]nit" })
-      map("n", "<leader>ef", ":edit .<CR>", { desc = "[e]xplorer cwd [f]iles" })
+      map("n", "<leader>ef", "<cmd>execute 'e ' .. expand('%:p:h')<CR>", { desc = "[e]xplorer cwd [f]iles" })
     end,
   },
   {

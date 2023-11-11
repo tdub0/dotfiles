@@ -2,7 +2,7 @@ return {
   -- Show context of the current function
   {
     "nvim-treesitter/nvim-treesitter-context",
-    enabled = true,
+    -- enabled = true,
     opts = { mode = "cursor", max_lines = 2 },
   },
 

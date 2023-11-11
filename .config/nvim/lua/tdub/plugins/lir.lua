@@ -81,13 +81,4 @@ return {
       map("n", "<leader>ef", "<cmd>execute 'e ' .. expand('%:p:h')<CR>", { desc = "[e]xplorer cwd [f]iles" })
     end,
   },
-  {
-    "tamago324/lir-git-status.nvim",
-    config = function()
-      local lir_git_status = require("lir.git_status")
-      lir_git_status.setup({
-        show_hidden_files = false,
-      })
-    end,
-  },
 }

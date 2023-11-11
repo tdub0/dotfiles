@@ -5,7 +5,7 @@ return {
   -- directory is a git repo.
   {
     "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
+    -- cmd = "Telescope",
     lazy = false,
     version = false, -- telescope did only one release, so use HEAD for now
     dependencies = {

@@ -5,26 +5,21 @@ local on_attach = function(_, bufnr)
     if desc then
       desc = "LSP: " .. desc
     end
-
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
   nmap("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
   nmap("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ction")
 
+  nmap("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
   nmap("gd", vim.lsp.buf.definition, "[g]oto [d]efinition")
   nmap("gr", require("telescope.builtin").lsp_references, "[g]oto [r]eferences")
   nmap("gI", vim.lsp.buf.implementation, "[g]oto [i]mplementation")
   nmap("<leader>D", vim.lsp.buf.type_definition, "type [d]efinition")
   nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[d]ocument [s]ymbols")
   nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[w]orkspace [s]ymbols")
-
-  -- See `:help K` for why this keymap
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
   nmap("<leader>K", vim.lsp.buf.signature_help, "Signature Documentation")
-
-  -- Lesser used LSP functionality
-  nmap("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
   nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[w]orkspace [a]dd folder")
   nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[w]orkspace [r]emove folder")
   nmap("<leader>wl", function()
@@ -123,7 +118,6 @@ return {
     -- Bottom right status updates for LSP on file load
     {
       "j-hui/fidget.nvim",
-      tag = "legacy",
       opts = {},
     },
 
@@ -143,6 +137,19 @@ return {
     mason_lspconfig.setup_handlers({
       function(server_name)
         require("lspconfig")[server_name].setup({
+          diagnostics = {
+            underline = true,
+            update_in_insert = false,
+            virtual_text = {
+              spacing = 4,
+              source = "if_many",
+              prefix = "●",
+              -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+              -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+              -- prefix = "icons",
+            },
+            severity_sort = true,
+          },
           capabilities = capabilities,
           on_attach = on_attach,
           settings = language_servers[server_name],

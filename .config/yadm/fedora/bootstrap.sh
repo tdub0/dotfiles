@@ -10,10 +10,9 @@ _pkgs="\
     tmux \
     "
 
-# sudo dnf install $_pkgs -y
-# ln -s /usr/bin/nvim ~/.local/bin/nvim
+sudo dnf install $_pkgs -y
+ln -s /usr/bin/nvim ~/.local/bin/nvim
 
-# bash $_yadm_cfg_dir/go.sh
-# bash $_yadm_cfg_dir/jbm_font.sh
-# bash $_yadm_cfg_dir/rust.sh
-
+bash $_yadm_cfg_dir/go.sh
+bash $_yadm_cfg_dir/jbm_font.sh
+bash $_yadm_cfg_dir/rust.sh

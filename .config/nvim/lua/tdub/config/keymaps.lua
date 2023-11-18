@@ -1,9 +1,6 @@
 -- local mapping for easier reading
 local map = vim.keymap.set
 
--- easy access to netrw
--- map("n", "<leader>pv", vim.cmd.Ex, { desc = "Open netrw" })
-
 -- keep cursor in the center of the buffer when paging up and down
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")

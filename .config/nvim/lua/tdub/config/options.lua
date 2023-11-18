@@ -12,7 +12,6 @@ local opt = vim.opt
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.colorcolumn = "80"
 opt.completeopt = "menu,menuone,noselect"
-opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.expandtab = true -- Use spaces instead of tabs
 opt.formatoptions = "jcroqlnt" -- tcqj
@@ -66,11 +65,3 @@ end
 -- Folding
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "indent"
-
--- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
-
--- netrw settings
--- vim.g.netrw_browse_split = 0
--- vim.g.netrw_banner = 0
--- vim.g.netrw_winsize = 25

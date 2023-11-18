@@ -6,30 +6,34 @@ return {
       local conform = require("conform")
       conform.setup({
         formatters_by_ft = {
-          json = { "prettier" },
+          json = { "prettierd" },
           lua = { "stylua" },
-          markdown = { "prettier" },
+          markdown = { "prettierd" },
           python = { "isort", "black" },
+          sh = { "shfmt" },
           yaml = { "prettier" },
         },
         format_on_save = {
           async = false,
           lsp_fallback = true,
-          timeout_ms = 500,
+          quiet = false,
+          timeout_ms = 3000,
         },
       })
       vim.keymap.set({ "n", "v" }, "<leader>cf", function()
         conform.format({
-          lsp_fallback = true,
           async = false,
-          timeout_ms = 500,
+          lsp_fallback = true,
+          quiet = false,
+          timeout_ms = 3000,
         })
       end, { desc = "[c]ode [f]ormat file or range" })
       vim.keymap.set({ "n", "v" }, "<leader>f", function()
         conform.format({
-          lsp_fallback = true,
           async = false,
-          timeout_ms = 500,
+          lsp_fallback = true,
+          quiet = false,
+          timeout_ms = 3000,
         })
       end, { desc = "[f]ormat file or range" })
     end,

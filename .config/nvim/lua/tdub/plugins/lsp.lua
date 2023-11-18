@@ -47,10 +47,7 @@ local language_servers = {
       configurationSources = { "flake8" },
       plugins = {
         autopep8 = { enabled = false },
-        flake8 = {
-          enabled = true,
-          config = "~/.config/flake8",
-        },
+        flake8 = { enabled = true },
         mccabe = { enabled = false },
         pycodestyle = { enabled = false },
         pydocstyle = { enabled = false },
@@ -102,7 +99,9 @@ return {
             "flake8", -- python linter
             "isort", -- python formatter
             "markdownlint", -- markdown linter
-            "prettier", -- yaml/markdown formatter
+            "prettierd", -- yaml/markdown formatter
+            "shellcheck", -- bash/shell linter
+            "shfmt", -- shell formatter
             "stylua", -- lua formatter
             "yamllint", -- yaml linter
           },

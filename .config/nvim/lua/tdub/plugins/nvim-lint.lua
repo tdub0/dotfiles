@@ -4,18 +4,25 @@ return {
     -- event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lint = require("lint")
-      -- TODO: figure out why flake8 no work through nvim-lint
-      -- local flake8 = lint.linters.flake8
-      -- flake8.args = {
-      --   "--max-line-length=88",
-      --   "--extend_ignore=E203",
-      --   "--max-complexity=10",
-      -- }
+      -- separate flake8 linting outside of pylsp flake8
+      -- pylsp flake8 uses project or global .flake8 file
+      -- diagnostics from both are shown in open files
+      local flake8 = lint.linters.flake8
+      flake8.args = {
+        "--format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s",
+        "--max-line-length=88",
+        "--extend-ignore=E203",
+        "--max-complexity=10",
+        "--no-show-source",
+        "-",
+      }
 
+      -- check current file with ":lua print(vim.bo.filetype)"
       lint.linters_by_ft = {
         markdown = { "markdownlint" },
         yaml = { "yamllint" },
-        -- python = { "flake8" },
+        python = { "flake8" },
+        sh = { "shellcheck" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

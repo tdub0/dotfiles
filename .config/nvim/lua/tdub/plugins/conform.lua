@@ -11,7 +11,7 @@ return {
           markdown = { "prettierd" },
           python = { "isort", "black" },
           sh = { "shfmt" },
-          yaml = { "prettier" },
+          yaml = { "yamlfmt" },
         },
         format_on_save = {
           async = false,

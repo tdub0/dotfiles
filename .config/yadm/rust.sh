@@ -16,21 +16,19 @@ _check_for_crates="\
 
 _crates=""
 
-_check_crate()
-{
-    _crate_check=$(which $1)
+_check_crate() {
+    _crate_check=$(which "$1")
     if [ $? -eq 1 ]; then
         _crates+=" $1"
     fi
 }
 
-for _crate in $_check_for_crates
-do
-    _check_crate $_crate
+for _crate in $_check_for_crates; do
+    _check_crate "$_crate"
 done
 
 if [ ! "$_crates" = "" ]; then
-    cargo install $_crates
+    cargo install "$_crates"
 fi
 
 _install_dir=~/.local/share
@@ -40,8 +38,8 @@ mkdir -p $_resource_dir
 _fd_dir=$_resource_dir/fd
 if [ ! -d $_fd_dir ]; then
     git clone https://github.com/sharkdp/fd $_fd_dir
-    pushd $_fd_dir
+    pushd $_fd_dir || return
     cargo build
     cargo install --path .
-    popd
+    popd || return
 fi

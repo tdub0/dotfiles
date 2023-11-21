@@ -1,6 +1,6 @@
 #!/bin/bash
-mkdir -p ~/.local/share/fonts/fonts/ttf/
-cd ~/.local/share/fonts
+mkdir -p ~/.local/share/fonts/ttf/
+cd ~/.local/share/fonts/ttf || return
 curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/JetBrainsMono/Ligatures/Bold/JetBrainsMonoNerdFont-Bold.ttf
 curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/JetBrainsMono/Ligatures/BoldItalic/JetBrainsMonoNerdFont-BoldItalic.ttf
 curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/JetBrainsMono/Ligatures/ExtraBold/JetBrainsMonoNerdFont-ExtraBold.ttf

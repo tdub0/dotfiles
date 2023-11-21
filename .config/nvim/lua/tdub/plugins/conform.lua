@@ -5,6 +5,11 @@ return {
     config = function()
       local conform = require("conform")
       conform.setup({
+        formatters = {
+          shfmt = {
+            prepend_args = { "-i", "4" },
+          },
+        },
         formatters_by_ft = {
           json = { "prettierd" },
           lua = { "stylua" },
@@ -20,6 +25,7 @@ return {
           timeout_ms = 3000,
         },
       })
+
       vim.keymap.set({ "n", "v" }, "<leader>cf", function()
         conform.format({
           async = false,

@@ -11,9 +11,7 @@ return {
           },
         },
         formatters_by_ft = {
-          json = { "prettierd" },
           lua = { "stylua" },
-          markdown = { "prettierd" },
           python = { "isort", "black" },
           sh = { "shfmt" },
           yaml = { "yamlfmt" },

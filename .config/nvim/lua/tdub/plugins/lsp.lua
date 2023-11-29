@@ -30,7 +30,7 @@ end
 -- enable the following language servers
 local language_servers = {
   -- astro = {},
-  -- gopls = {},
+  gopls = {},
   clangd = {},
   rust_analyzer = {},
   lua_ls = {
@@ -99,7 +99,6 @@ return {
             "flake8", -- python linter
             "isort", -- python formatter
             "markdownlint", -- markdown linter
-            "prettierd", -- yaml/markdown formatter
             "shellcheck", -- bash/shell linter
             "shfmt", -- shell formatter
             "stylua", -- lua formatter

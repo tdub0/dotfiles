@@ -54,7 +54,7 @@ return {
           },
         },
         on_init = function() end,
-        hide_cursor = true,
+        hide_cursor = false,
       })
 
       vim.api.nvim_create_autocmd({ "FileType" }, {

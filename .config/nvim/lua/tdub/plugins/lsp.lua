@@ -102,7 +102,6 @@ return {
             "shellcheck", -- bash/shell linter
             "shfmt", -- shell formatter
             "stylua", -- lua formatter
-            "yamlfmt", -- yaml formatter
             "yamllint", -- yaml linter
           },
         })

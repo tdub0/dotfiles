@@ -100,6 +100,7 @@ map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 map("n", "<leader>qw", "<cmd>wq<cr>", { desc = "Quit and save" })
+map("n", "<leader>qf", "<cmd>q<cr>", { desc = "Quit file" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })

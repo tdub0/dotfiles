@@ -1,0 +1,12 @@
+[env]
+TERM = "alacritty"
+
+[font]
+size = 10.5
+
+[font.normal]
+family = "JetBrainsMonoNerdFont"
+
+[window]
+decorations = "none"
+decorations_theme_variant = "Dark"

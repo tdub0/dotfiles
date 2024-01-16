@@ -9,6 +9,7 @@ fi
 source ~/.bashrc
 
 _check_for_crates="\
+    alacritty \
     bat \
     fzf \
     rg \

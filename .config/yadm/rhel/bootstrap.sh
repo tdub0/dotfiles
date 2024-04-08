@@ -8,7 +8,7 @@ _pkgs="\
     tmux \
     "
 
-sudo dnf install "$_pkgs" -y
+sudo dnf install $_pkgs -y
 
 bash "$_yadm_cfg_dir/go.sh"
 bash "$_yadm_cfg_dir/jbm_font.sh"

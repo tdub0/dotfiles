@@ -2,15 +2,15 @@
 _script_dir="$(dirname "${BASH_SOURCE:-$0}")"
 _yadm_cfg_dir="$(dirname "$(dirname "${BASH_SOURCE:-$0}")")"
 
-_pkgs="\
+_pkgs="
     alacritty \
     git \
     neovim \
     python3-neovim \
-    tmux \
+    tmux
     "
 
-sudo dnf install "$_pkgs" -y
+sudo dnf install $_pkgs -y
 ln -s /usr/bin/nvim ~/.local/bin/nvim
 
 bash "$_yadm_cfg_dir/go.sh"

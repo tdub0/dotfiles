@@ -19,4 +19,5 @@ if [ "$(uname)" = "Linux" ]; then
     fi
 else
     echo "Assume windows for now..."
+    bash "$_yadm_cfg_dir/alacritty.sh"
 fi

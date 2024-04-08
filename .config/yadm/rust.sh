@@ -12,7 +12,7 @@ _check_for_crates="\
     alacritty \
     bat \
     fzf \
-    rg \
+    ripgrep \
     "
 
 _crates=""

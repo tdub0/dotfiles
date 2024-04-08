@@ -1,6 +1,6 @@
 #!/bin/bash
 
-_GO_VERSION=1.21.1
+_GO_VERSION=1.22.2
 
 if [ ! -f ~/.local/bin/go ]; then
     _tarball_name=go$_GO_VERSION.linux-amd64.tar.gz

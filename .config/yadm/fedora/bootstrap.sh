@@ -6,7 +6,6 @@ _pkgs="
     alacritty \
     git \
     neovim \
-    python3-neovim \
     tmux
     "
 

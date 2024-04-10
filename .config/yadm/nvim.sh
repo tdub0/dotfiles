@@ -17,15 +17,3 @@ if [ ! -f ~/.local/bin/nvim ]; then
     popd || return
     ln -s $_resource_dir/squashfs-root/AppRun ~/.local/bin/nvim
 fi
-
-# Check for and setup the expected venv for nvim
-if [ ! -d ~/.local/venv/nvim ]; then
-    mkdir -p ~/.local/venv
-    # Add check to make sure i get the python3 version i want...
-    pushd ~/.local/venv || return
-    python3 -m venv nvim
-    source nvim/bin/activate
-    pip install debugpy isort black flake8
-    deactivate
-    popd || return
-fi

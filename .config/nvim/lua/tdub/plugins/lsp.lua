@@ -98,7 +98,6 @@ return {
             "black", -- python formatter
             "flake8", -- python linter
             "isort", -- python formatter
-            "markdownlint", -- markdown linter
             "shellcheck", -- bash/shell linter
             "shfmt", -- shell formatter
             "stylua", -- lua formatter

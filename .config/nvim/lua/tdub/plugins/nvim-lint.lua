@@ -19,7 +19,6 @@ return {
 
       -- check current file with ":lua print(vim.bo.filetype)"
       lint.linters_by_ft = {
-        markdown = { "markdownlint" },
         yaml = { "yamllint" },
         python = { "flake8" },
         sh = { "shellcheck" },

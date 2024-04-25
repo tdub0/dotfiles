@@ -15,3 +15,5 @@ ln -s /usr/bin/nvim ~/.local/bin/nvim
 bash "$_yadm_cfg_dir/go.sh"
 bash "$_yadm_cfg_dir/jbm_font.sh"
 bash "$_yadm_cfg_dir/rust.sh"
+bash "$_yadm_cfg_dir/lazygit.sh"
+bash "$_yadm_cfg_dir/lazydocker.sh"

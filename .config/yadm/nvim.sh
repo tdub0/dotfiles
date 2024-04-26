@@ -9,7 +9,7 @@ if [ ! -f ~/.local/bin/nvim ]; then
 
     pushd $_resource_dir || return
     [ -f nvim.appimage ] && rm nvim.appimage
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    curl -LOsS https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod u+x nvim.appimage
     [ -d squashfs-root ] && rm -rf squashfs-root
     ./nvim.appimage --appimage-extract

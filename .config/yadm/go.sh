@@ -9,7 +9,7 @@ if [ ! -f ~/.local/bin/go ]; then
     mkdir -p $_install_dir
     mkdir -p $_resource_dir
     pushd $_resource_dir || return
-    curl -LO https://go.dev/dl/$_tarball_name
+    curl -LOsS https://go.dev/dl/$_tarball_name
     tar -C $_install_dir -xzf $_tarball_name
     ln -s $_install_dir/go/bin/go ~/.local/bin/go
     ln -s $_install_dir/go/bin/gofmt ~/.local/bin/gofmt

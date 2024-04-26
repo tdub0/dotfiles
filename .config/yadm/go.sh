@@ -13,5 +13,6 @@ if [ ! -f ~/.local/bin/go ]; then
     tar -C $_install_dir -xzf $_tarball_name
     ln -s $_install_dir/go/bin/go ~/.local/bin/go
     ln -s $_install_dir/go/bin/gofmt ~/.local/bin/gofmt
+    rm $_tarball_name
     popd || return
 fi

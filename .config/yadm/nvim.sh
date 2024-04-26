@@ -14,6 +14,7 @@ if [ ! -f ~/.local/bin/nvim ]; then
     [ -d squashfs-root ] && rm -rf squashfs-root
     ./nvim.appimage --appimage-extract
     ./squashfs-root/AppRun --version
+    rm nvim.appimage
     popd || return
     ln -s $_resource_dir/squashfs-root/AppRun ~/.local/bin/nvim
 fi

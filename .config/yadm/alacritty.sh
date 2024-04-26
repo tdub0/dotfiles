@@ -15,7 +15,7 @@ else
     mkdir -p $_resource_dir
 
     _pkgs="cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel scdoc"
-    sudo dnf install $_pkgs -y
+    sudo dnf install $_pkgs -y || return
     sudo group install "Development Tools"
 
     pushd $_resource_dir || return
@@ -30,12 +30,13 @@ else
     sudo update-desktop-database
     sudo mkdir -p /usr/local/share/man/man1
     sudo mkdir -p /usr/local/share/man/man5
-    scdoc < extra/man/alacritty.1.scd | gzip -c | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
-    scdoc < extra/man/alacritty-msg.1.scd | gzip -c | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
-    scdoc < extra/man/alacritty.5.scd | gzip -c | sudo tee /usr/local/share/man/man5/alacritty.5.gz > /dev/null
-    scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | sudo tee /usr/local/share/man/man5/alacritty-bindings.5.gz > /dev/null
+    scdoc <extra/man/alacritty.1.scd | gzip -c | sudo tee /usr/local/share/man/man1/alacritty.1.gz >/dev/null
+    scdoc <extra/man/alacritty-msg.1.scd | gzip -c | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz >/dev/null
+    scdoc <extra/man/alacritty.5.scd | gzip -c | sudo tee /usr/local/share/man/man5/alacritty.5.gz >/dev/null
+    scdoc <extra/man/alacritty-bindings.5.scd | gzip -c | sudo tee /usr/local/share/man/man5/alacritty-bindings.5.gz >/dev/null
     mkdir -p ~/.bash_completion
     cp extra/completions/alacritty.bash ~/.bash_completion/alacritty
-    echo "source ~/.bash_completion/alacritty" >> ~/.bashrc
+    echo "source ~/.bash_completion/alacritty" >>~/.bashrc.d/local_aliases.sh
+    rm -rf alacritty/
     popd || return
 fi

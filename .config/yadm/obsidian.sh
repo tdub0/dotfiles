@@ -19,7 +19,7 @@ if [ ! -f ~/.local/bin/obsidian ]; then
     mv ./squashfs-root ./obsidian
     rm obsidian.appimage
     sudo cp ./obsidian/obsidian.png /usr/share/pixmaps/obsidian.png
-    sed -i 's|Exec=AppRun|Exec=obsidian|' ./obsidian/obsidian.desktop
+    sed -i 's|Exec=AppRun.*|Exec=obsidian|' ./obsidian/obsidian.desktop
     sudo desktop-file-install ./obsidian/obsidian.desktop
     sudo update-desktop-database
     popd || return

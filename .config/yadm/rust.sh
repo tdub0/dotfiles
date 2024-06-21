@@ -28,7 +28,7 @@ for _crate in $_check_for_crates; do
 done
 
 if [ ! "$_crates" = "" ]; then
-    cargo install "$_crates"
+    cargo install"$_crates"
 fi
 
 _install_dir=~/.local/share

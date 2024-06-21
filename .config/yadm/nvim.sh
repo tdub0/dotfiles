@@ -11,10 +11,12 @@ if [ ! -f ~/.local/bin/nvim ]; then
     [ -f nvim.appimage ] && rm nvim.appimage
     curl -LOsS https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod u+x nvim.appimage
-    [ -d squashfs-root ] && rm -rf squashfs-root
+    [ -d ./squashfs-root ] && rm -rf ./squashfs-root
+    [ -d ./nvim ] && rm -rf ./nvim
     ./nvim.appimage --appimage-extract
-    ./squashfs-root/AppRun --version
+    mv ./squashfs-root ./nvim
+    ./nvim/AppRun --version
     rm nvim.appimage
     popd || return
-    ln -s $_resource_dir/squashfs-root/AppRun ~/.local/bin/nvim
+    ln -s $_resource_dir/nvim/AppRun ~/.local/bin/nvim
 fi

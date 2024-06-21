@@ -11,17 +11,21 @@ if [ ! "$(uname)" == "Linux" ]; then
     ln -s ~/.local/bin/${_portable_filename} ~/.local/bin/alacritty.exe
     popd || return
 else
+    _alacritty_version=v0.13.2
     _resource_dir=~/.local/resources
     mkdir -p $_resource_dir
 
     _pkgs="cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel scdoc"
     sudo dnf install $_pkgs -y || return
-    sudo group install "Development Tools"
+    sudo dnf group install "Development Tools" -y
 
     pushd $_resource_dir || return
-    [ -f alacrity ] && rm -rf alacritty
+    if [ -d alacritty ]; then
+        rm -rf alacritty
+    fi
     git clone https://github.com/alacritty/alacritty.git
     cd alacritty || return
+    git checkout $_alacritty_version
     cargo build --release
     sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
     sudo cp target/release/alacritty /usr/local/bin

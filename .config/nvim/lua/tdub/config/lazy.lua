@@ -21,7 +21,7 @@ require("lazy").setup({
   checker = {
     notify = false,
   },
-  install = { colorscheme = { "jellybeans-nvim" } },
+  install = { colorscheme = { "catppuccin" } },
   change_detection = {
     notify = false,
   },

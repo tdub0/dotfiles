@@ -34,3 +34,5 @@
     summary = true
 [include]
     path = .gitconfig.local
+[includeIf "gitdir:~/projects/"]
+    path = .gitconfig.projects

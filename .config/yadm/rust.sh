@@ -10,7 +10,6 @@ source ~/.bashrc
 
 _check_for_crates="\
     bat \
-    fzf \
     ripgrep \
     "
 

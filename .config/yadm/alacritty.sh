@@ -43,4 +43,6 @@ else
     echo "source ~/.bash_completion/alacritty" >>~/.bashrc.d/local_aliases.sh
     rm -rf alacritty/
     popd || return
+
+    curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-macchiato.toml
 fi

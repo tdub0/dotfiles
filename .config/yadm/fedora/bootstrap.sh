@@ -4,17 +4,18 @@ _yadm_cfg_dir="$(dirname "$(dirname "${BASH_SOURCE:-$0}")")"
 
 _pkgs="
     alacritty \
+    fd-find \
+    fzf \
     git \
-    neovim \
     tmux
     "
 
 sudo dnf install $_pkgs -y
-ln -s /usr/bin/nvim ~/.local/bin/nvim
 
 bash "$_yadm_cfg_dir/go.sh"
 bash "$_yadm_cfg_dir/jbm_font.sh"
 bash "$_yadm_cfg_dir/rust.sh"
 bash "$_yadm_cfg_dir/lazygit.sh"
 bash "$_yadm_cfg_dir/lazydocker.sh"
+bash "$_yadm_cfg_dir/nvim.sh"
 bash "$_yadm_cfg_dir/tmux.sh"

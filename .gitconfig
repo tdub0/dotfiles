@@ -21,18 +21,32 @@
     branch = auto
     interactive = auto
     grep = auto
+[commit]
+gpgsign = true
 [diff]
     tool = nvimdiff
 [difftool]
     prompt = false
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[gpg]
+format = ssh
+[gpg.ssh]
+allowedSignersFile = ~/.ssh/allowed_signers
 [init]
     defaultBranch = master
 [merge]
     tool = nvimdiff
     summary = true
+[tag]
+gpgsign = true
 [include]
     path = .gitconfig.local
 [includeIf "gitdir:~/projects/"]
     path = .gitconfig.projects
+
+# [user]
+# signingkey = /path/to/key
+
+# [core]
+# sshCommand = ssh -i /path/to/key

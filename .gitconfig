@@ -44,9 +44,3 @@ gpgsign = true
     path = .gitconfig.local
 [includeIf "gitdir:~/projects/"]
     path = .gitconfig.projects
-
-# [user]
-# signingkey = /path/to/key
-
-# [core]
-# sshCommand = ssh -i /path/to/key

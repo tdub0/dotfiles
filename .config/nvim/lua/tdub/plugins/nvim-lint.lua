@@ -1,7 +1,6 @@
 return {
   {
     "mfussenegger/nvim-lint",
-    -- event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lint = require("lint")
       -- separate flake8 linting outside of pylsp flake8
@@ -19,9 +18,10 @@ return {
 
       -- check current file with ":lua print(vim.bo.filetype)"
       lint.linters_by_ft = {
-        yaml = { "yamllint" },
-        python = { "flake8" },
+        -- cmake = { "cmakelint" },
+        python = { "flake8", "mypy" },
         sh = { "shellcheck" },
+        yaml = { "yamllint" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

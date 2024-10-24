@@ -4,26 +4,35 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    opts_extend = { "spec" },
     opts = {
-      defaults = {
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader><tab>"] = { name = "+tabs" },
-        ["<leader>b"] = { name = "+buffer" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>q"] = { name = "+quit/session" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>sg"] = { name = "+git" },
-        ["<leader>u"] = { name = "+undo/ui" },
-        ["<leader>w"] = { name = "+windows" },
-        ["<leader>x"] = { name = "+quickfix" },
+      defaults = {},
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "<leader>b", group = "buffer" },
+          { "<leader>c", group = "code" },
+          { "<leader>d", group = "diagnostics" },
+          { "<leader>e", group = "explorer" },
+          { "<leader>g", group = "git" },
+          { "<leader>q", group = "quit/session" },
+          { "<leader>s", group = "search" },
+          { "<leader>sg", group = "git" },
+          { "<leader>u", group = "undo/ui" },
+          { "<leader>w", group = "windows" },
+          { "<leader>x", group = "quickfix" },
+          { "<leader>]", group = "next" },
+          { "<leader>[", group = "prev" },
+          { "<leader><tab>", group = "tabs" },
+        },
       },
     },
     config = function(_, opts)
       local wk = require("which-key")
-      wk.register(opts.defaults)
+      wk.setup(opts)
+      if not vim.tbl_isempty(opts.defaults) then
+        wk.register(opts.defaults)
+      end
     end,
   },
 }

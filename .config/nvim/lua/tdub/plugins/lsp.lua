@@ -8,7 +8,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
+  nmap("<leader>cr", vim.lsp.buf.rename, "[r]ename")
   nmap("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ction")
 
   nmap("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
@@ -29,10 +29,13 @@ end
 
 -- enable the following language servers
 local language_servers = {
-  -- astro = {},
-  gopls = {},
+  ansiblels = {},
   clangd = {},
-  rust_analyzer = {},
+  cmake = {},
+  docker_compose_language_service = {},
+  dockerls = {},
+  gitlab_ci_ls = {},
+  gopls = {},
   lua_ls = {
     Lua = {
       completion = {
@@ -42,6 +45,7 @@ local language_servers = {
       workspace = { checkThirdParty = false },
     },
   },
+  rust_analyzer = {},
   pylsp = {
     pylsp = {
       configurationSources = { "flake8" },
@@ -59,7 +63,7 @@ local language_servers = {
       },
     },
   },
-  -- tailwindcss = {},
+  pyright = {},
 }
 
 return {
@@ -95,9 +99,24 @@ return {
 
         mason_tool_installer.setup({
           ensure_installed = {
-            "black", -- python formatter
-            "flake8", -- python linter
-            "isort", -- python formatter
+            -- python
+            { "black", version = "24.10.0" },
+            { "flake8", version = "6.0.0" },
+            { "isort", version = "5.13.2" },
+            { "mypy", version = "1.11.2" },
+            { "pyright", version = "1.1.383" },
+            "ansible-language-server", -- ansible lsp
+            "ansible-lint", -- ansible linter
+            "clangd", -- c/c++
+            "cmake-language-server", -- cmake lsp
+            "cmakelint", -- cmake linter
+            "docker-compose-language-service", -- docker compose lsp
+            "dockerfile-language-server", -- dockerfile lsp
+            "gitlab-ci-ls", -- gitlab lsp
+            "gopls", -- go lsp
+            "lua-language-server", -- lua lsp
+            "python-lsp-server", -- python lsp
+            "rust-analyzer", -- rust lsp
             "shellcheck", -- bash/shell linter
             "shfmt", -- shell formatter
             "stylua", -- lua formatter

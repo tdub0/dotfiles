@@ -75,7 +75,6 @@ return {
       })
 
       local map = vim.keymap.set
-      map("n", "<leader>pv", ":lua require('lir.float').toggle()<CR>", { desc = "toggle explorer" })
       map("n", "<leader>et", ":lua require('lir.float').toggle()<CR>", { desc = "[e]xplorer [t]oggle" })
       map("n", "<leader>ei", ":lua require('lir.float').init()<CR>", { desc = "[e]xplorer [i]nit" })
       map("n", "<leader>ef", "<cmd>execute 'e ' .. expand('%:p:h')<CR>", { desc = "[e]xplorer cwd [f]iles" })

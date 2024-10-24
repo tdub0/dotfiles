@@ -1,18 +1,59 @@
 return {
   -- harpoon
   {
-    "theprimeagen/harpoon",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    opts = {
+      menu = {
+        width = vim.api.nvim_win_get_width(0) - 4,
+      },
+      settings = {
+        save_on_toggle = true,
+      },
     },
-    config = function()
-      local map = vim.keymap.set
-      map("n", "<leader>a", "<cmd>lua require('harpoon.mark').add_file()<cr>", { desc = "harpoon - [a]dd file" })
-      map("n", "<leader>m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { desc = "harpoon - [m]enu" })
-      map("n", "<C-h>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { desc = "harpoon - nav file [1]" })
-      map("n", "<C-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { desc = "harpoon - nav file [2]" })
-      map("n", "<C-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { desc = "harpoon - nav file [3]" })
-      map("n", "<C-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", { desc = "harpoon - nav file [4]" })
+    keys = function()
+      local keys = {
+        {
+          "<leader>a",
+          function()
+            require("harpoon"):list():add()
+          end,
+          desc = "harpoon - [a]dd file",
+        },
+        {
+          "<leader>m",
+          function()
+            local harpoon = require("harpoon")
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
+          desc = "harpoon - [m]enu",
+        },
+        {
+          "<C-h>",
+          function()
+            require("harpoon"):list():select(1)
+          end,
+        },
+        {
+          "<C-j>",
+          function()
+            require("harpoon"):list():select(2)
+          end,
+        },
+        {
+          "<C-k>",
+          function()
+            require("harpoon"):list():select(3)
+          end,
+        },
+        {
+          "<C-l>",
+          function()
+            require("harpoon"):list():select(4)
+          end,
+        },
+      }
+      return keys
     end,
   },
 }

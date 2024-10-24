@@ -19,5 +19,6 @@ sudo dnf install $_pkgs -y
 bash "$_yadm_cfg_dir/jbm_font.sh"
 bash "$_yadm_cfg_dir/lazydocker.sh"
 bash "$_yadm_cfg_dir/lazygit.sh"
+bash "$_yadm_cfg_dir/nodejs.sh"
 bash "$_yadm_cfg_dir/rust.sh"
 bash "$_yadm_cfg_dir/tmux.sh"

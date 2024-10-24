@@ -29,16 +29,3 @@ done
 if [ ! "$_crates" = "" ]; then
     cargo install"$_crates"
 fi
-
-_install_dir=~/.local/share
-_resource_dir=~/.local/resources
-mkdir -p $_install_dir
-mkdir -p $_resource_dir
-_fd_dir=$_resource_dir/fd
-if [ ! -d $_fd_dir ]; then
-    git clone https://github.com/sharkdp/fd $_fd_dir
-    pushd $_fd_dir || return
-    cargo build
-    cargo install --path .
-    popd || return
-fi

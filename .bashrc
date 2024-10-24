@@ -1,38 +1,27 @@
 # .bashrc
 
-# Source global definitions
-# if [ -f /etc/bashrc ]; then
-# 	. /etc/bash.bashrc
-# fi
-
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
 
-if ! [[ "$RUSTPATH" =~ "$HOME/.cargo/bin" ]]
-then
-        RUSTPATH="$HOME/.cargo/bin:$RUSTPATH"
+if ! [[ "$RUSTPATH" =~ "$HOME/.cargo/bin" ]]; then
+    RUSTPATH="$HOME/.cargo/bin:$RUSTPATH"
 fi
 export PATH=$PATH:$RUSTPATH
 
-if ! [[ "$GOPATH" =~ "$HOME/.config/go" ]]
-then
-        GOPATH="$HOME/.config/go:$GOPATH"
+if ! [[ "$GOPATH" =~ "$HOME/go" ]]; then
+    GOPATH="$HOME/go:$GOPATH"
 fi
 export GOPATH
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
 
 # User specific aliases and functions
 EDITOR=~/.local/bin/nvim
 export EDITOR
 
 # Run any shell script in ~/.bashrc.d to set up environment
-for i in ~/.bashrc.d/*.sh ; do
+for i in ~/.bashrc.d/*.sh; do
     if [ -r "$i" ]; then
         if [ "${-#*i}" != "$-" ]; then
             . "$i"

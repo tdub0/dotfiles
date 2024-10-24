@@ -7,15 +7,17 @@ _pkgs="
     fd-find \
     fzf \
     git \
-    tmux
+    gnome-shell-extension-pop-shell \
+    golang \
+    neovim \
+    tmux \
+    xprop
     "
 
 sudo dnf install $_pkgs -y
 
-bash "$_yadm_cfg_dir/go.sh"
 bash "$_yadm_cfg_dir/jbm_font.sh"
-bash "$_yadm_cfg_dir/rust.sh"
-bash "$_yadm_cfg_dir/lazygit.sh"
 bash "$_yadm_cfg_dir/lazydocker.sh"
-bash "$_yadm_cfg_dir/nvim.sh"
+bash "$_yadm_cfg_dir/lazygit.sh"
+bash "$_yadm_cfg_dir/rust.sh"
 bash "$_yadm_cfg_dir/tmux.sh"

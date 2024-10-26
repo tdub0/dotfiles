@@ -15,6 +15,11 @@ return {
         "--no-show-source",
         "-",
       }
+      local yamllint = lint.linters.yamllint
+      yamllint.args = {
+        '-d "{extends: default, rules: {document-start: disable}}"',
+        "-",
+      }
 
       -- check current file with ":lua print(vim.bo.filetype)"
       lint.linters_by_ft = {

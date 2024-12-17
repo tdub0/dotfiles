@@ -6,15 +6,12 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 fi
 export PATH
 
-if ! [[ "$RUSTPATH" =~ "$HOME/.cargo/bin" ]]; then
-    RUSTPATH="$HOME/.cargo/bin:$RUSTPATH"
-fi
-export PATH=$PATH:$RUSTPATH
+source "$HOME/.cargo/env"
 
-if ! [[ "$GOPATH" =~ "$HOME/go" ]]; then
-    GOPATH="$HOME/go:$GOPATH"
+if ! [[ "$PATH" =~ "$HOME/go/bin" ]]; then
+    PATH="$HOME/go/bin:$PATH"
 fi
-export GOPATH
+export PATH
 
 if ! [[ "NVM_DIR" =~ "$HOME/.nvm" ]]; then
     NVM_DIR="$HOME/.nvm"

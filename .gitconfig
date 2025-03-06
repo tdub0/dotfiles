@@ -14,6 +14,7 @@
     lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
     lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+
 [color]
     ui = auto
     diff = auto
@@ -21,26 +22,41 @@
     branch = auto
     interactive = auto
     grep = auto
+
 [commit]
-gpgsign = true
+    gpgsign = true
+
+[core]
+    autocrlf = input
+    eol = lf
+
 [diff]
     tool = nvimdiff
+
 [difftool]
     prompt = false
+
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
 [gpg]
-format = ssh
+    format = ssh
+
 [gpg.ssh]
-allowedSignersFile = ~/.ssh/allowed_signers
+    allowedSignersFile = ~/.ssh/allowed_signers
+
 [init]
     defaultBranch = master
+
 [merge]
     tool = nvimdiff
     summary = true
+
 [tag]
-gpgsign = true
+    gpgsign = true
+
 [include]
     path = .gitconfig.local
+
 [includeIf "gitdir:~/projects/"]
     path = .gitconfig.projects

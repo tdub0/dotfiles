@@ -24,7 +24,7 @@
     grep = auto
 
 [commit]
-    gpgsign = true
+    gpgsign = false
 
 [core]
     autocrlf = input
@@ -46,17 +46,23 @@
     allowedSignersFile = ~/.ssh/allowed_signers
 
 [init]
-    defaultBranch = master
+    defaultBranch = main
 
 [merge]
     tool = nvimdiff
     summary = true
 
 [tag]
-    gpgsign = true
+    gpgsign = false
 
 [include]
     path = .gitconfig.local
 
 [includeIf "gitdir:~/projects/"]
+    path = .gitconfig.projects
+
+[includeIf "gitdir:~/projects/github/"]
+    path = .gitconfig.local
+
+[includeIf "gitdir:/mnt/c/"]
     path = .gitconfig.projects

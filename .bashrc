@@ -6,7 +6,9 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 fi
 export PATH
 
-source "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+fi
 
 if ! [[ "$PATH" =~ "$HOME/go/bin" ]]; then
     PATH="$HOME/go/bin:$PATH"
@@ -34,4 +36,13 @@ for i in ~/.bashrc.d/*.sh; do
     fi
 done
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+XC32_BIN="/opt/microchip/xc32/v1.42/bin"
+if [ -d $XC32_BIN ]; then
+    PATH="$XC32_BIN:$PATH"
+fi
+
+CA_CERT_FILE="/usr/local/share/ca-certificates/ZscalerRoot0.crt"
+if [ -f $CA_CERT_FILE ]; then
+    export NODE_EXTRA_CA_CERTS=$CA_CERT_FILE
+    export SSL_CERT_FILE=$CA_CERT_FILE
+fi

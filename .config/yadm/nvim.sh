@@ -1,6 +1,8 @@
 #!/bin/bash
 _script_dir="$(dirname "${BASH_SOURCE:-$0}")"
 
+RELEASE=v0.11.2
+
 if [ ! -f ~/.local/bin/nvim ]; then
     _install_dir=~/.local/share
     _resource_dir=~/.local/resources
@@ -8,15 +10,9 @@ if [ ! -f ~/.local/bin/nvim ]; then
     mkdir -p $_resource_dir
 
     pushd $_resource_dir || return
-    [ -f nvim.appimage ] && rm nvim.appimage
-    curl -LOsS https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    chmod u+x nvim.appimage
-    [ -d ./squashfs-root ] && rm -rf ./squashfs-root
-    [ -d ./nvim ] && rm -rf ./nvim
-    ./nvim.appimage --appimage-extract
-    mv ./squashfs-root ./nvim
-    ./nvim/AppRun --version
-    rm nvim.appimage
+    [ -f nvim-linux-x86_64.appimage ] && rm nvim-linux-x86_64.appimage
+    curl -LOsS https://github.com/neovim/neovim/releases/download/$RELEASE/nvim-linux-x86_64.appimage
+    chmod u+x nvim-linux-x86_64.appimage
     popd || return
-    ln -s $_resource_dir/nvim/AppRun ~/.local/bin/nvim
+    ln -s $_resource_dir/nvim-linux-x86_64.appimage ~/.local/bin/nvim
 fi

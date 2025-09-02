@@ -39,6 +39,9 @@
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
+[fetch]
+    prune = true
+
 [gpg]
     format = ssh
 

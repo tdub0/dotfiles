@@ -1,0 +1,9 @@
+# Watson configuration
+
+[backend]
+repo = git@github.com:tdub0/timetracker.git
+
+[options]
+log_current = true
+pager = false
+report_current = true

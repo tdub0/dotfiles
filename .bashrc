@@ -35,14 +35,3 @@ for i in ~/.bashrc.d/*.sh; do
         fi
     fi
 done
-
-XC32_BIN="/opt/microchip/xc32/v1.42/bin"
-if [ -d $XC32_BIN ]; then
-    PATH="$XC32_BIN:$PATH"
-fi
-
-CA_CERT_FILE="/usr/local/share/ca-certificates/ZscalerRoot0.crt"
-if [ -f $CA_CERT_FILE ]; then
-    export NODE_EXTRA_CA_CERTS=$CA_CERT_FILE
-    export SSL_CERT_FILE=$CA_CERT_FILE
-fi

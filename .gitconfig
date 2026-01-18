@@ -24,7 +24,7 @@
     grep = auto
 
 [commit]
-    gpgsign = false
+    gpgsign = true
 
 [core]
     autocrlf = input
@@ -56,16 +56,7 @@
     summary = true
 
 [tag]
-    gpgsign = false
+    gpgsign = true
 
 [include]
     path = .gitconfig.local
-
-[includeIf "gitdir:~/projects/"]
-    path = .gitconfig.projects
-
-[includeIf "gitdir:~/projects/github/"]
-    path = .gitconfig.local
-
-[includeIf "gitdir:/mnt/c/"]
-    path = .gitconfig.projects

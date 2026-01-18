@@ -3,18 +3,8 @@ return {
     "mfussenegger/nvim-lint",
     config = function()
       local lint = require("lint")
-      -- separate flake8 linting outside of pylsp flake8
-      -- pylsp flake8 uses project or global .flake8 file
-      -- diagnostics from both are shown in open files
-      local flake8 = lint.linters.flake8
-      flake8.args = {
-        "--format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s",
-        "--max-line-length=88",
-        "--extend-ignore=E203",
-        "--max-complexity=10",
-        "--no-show-source",
-        "-",
-      }
+
+      -- Configure yamllint
       local yamllint = lint.linters.yamllint
       yamllint.args = {
         '-d "{extends: default, rules: {document-start: disable}}"',
@@ -23,8 +13,8 @@ return {
 
       -- check current file with ":lua print(vim.bo.filetype)"
       lint.linters_by_ft = {
-        -- cmake = { "cmakelint" },
-        python = { "flake8", "mypy" },
+        cmake = { "cmakelint" },
+        python = { "ruff" },
         sh = { "shellcheck" },
         yaml = { "yamllint" },
       }
@@ -37,9 +27,9 @@ return {
         end,
       })
 
-      vim.keymap.set("n", "<leader>cl", function()
+      vim.keymap.set("n", "<leader>cn", function()
         lint.try_lint()
-      end, { desc = "[c]ode [l]int: trigger linting for current file" })
+      end, { desc = "[c]ode li[n]t: trigger linting for current file" })
     end,
   },
 }

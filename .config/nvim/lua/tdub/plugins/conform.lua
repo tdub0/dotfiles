@@ -12,7 +12,14 @@ return {
         },
         formatters_by_ft = {
           lua = { "stylua" },
-          python = { "isort", "black" },
+          python = {
+            -- to fix auto-fixable lint errors
+            "ruff_fix",
+            -- to run ruff formatter
+            "ruff_format",
+            -- to organize imports
+            "ruff_organize_imports",
+          },
           sh = { "shfmt" },
           yaml = { "yamlfmt" },
         },
@@ -21,7 +28,7 @@ return {
           if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
             return
           end
-          return { async = false, lsp_fallback = true, quiet = false, timeout_ms = 3000 }
+          return { lsp_format = "fallback", quiet = false, timeout_ms = 3000 }
         end,
       })
 
@@ -48,16 +55,14 @@ return {
 
       vim.keymap.set({ "n", "v" }, "<leader>cf", function()
         conform.format({
-          async = false,
-          lsp_fallback = true,
+          lsp_format = "fallback",
           quiet = false,
           timeout_ms = 3000,
         })
       end, { desc = "[c]ode [f]ormat file or range" })
       vim.keymap.set({ "n", "v" }, "<leader>f", function()
         conform.format({
-          async = false,
-          lsp_fallback = true,
+          lsp_format = "fallback",
           quiet = false,
           timeout_ms = 3000,
         })

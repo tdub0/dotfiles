@@ -1,1 +1,1 @@
-require("tdub.init")
+require("config.init")

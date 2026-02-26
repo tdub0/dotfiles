@@ -13,7 +13,6 @@ return {
 
       -- check current file with ":lua print(vim.bo.filetype)"
       lint.linters_by_ft = {
-        cmake = { "cmakelint" },
         python = { "ruff" },
         sh = { "shellcheck" },
         yaml = { "yamllint" },

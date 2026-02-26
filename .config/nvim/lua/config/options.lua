@@ -1,12 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Each entry can be:
--- * the name of a detector function like `lsp` or `cwd`
--- * a pattern or array of patterns like `.git` or `lua`.
--- * a function with signature `function(buf) -> string|string[]`
-vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
-
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
@@ -74,3 +68,9 @@ opt.foldlevelstart = 99
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+-- Disable unused providers
+vim.g.loaded_npm_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0

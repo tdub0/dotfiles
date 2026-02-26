@@ -41,10 +41,9 @@ return {
     end,
   },
 
-  -- LSP setup via native vim.lsp API (Neovim 0.11+)
-  -- Per-server configs live in lsp/*.lua at the config root (auto-loaded by Neovim).
   {
-    "hrsh7th/cmp-nvim-lsp",
+    "neovim/nvim-lspconfig",
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       -- Shared capabilities: merge nvim-cmp completion items into all servers
@@ -122,11 +121,17 @@ return {
 
       -- Minimal configs for servers that need no custom settings.
       -- lsp/*.lua handles servers that do (clangd, lua_ls, harper_ls, basedpyright, ruff).
-      for _, server in ipairs({ "ansiblels", "docker_compose_language_service", "dockerls", "gopls", "rust_analyzer" }) do
+      for _, server in ipairs({
+        "ansiblels",
+        "docker_compose_language_service",
+        "dockerls",
+        "gopls",
+        "rust_analyzer",
+      }) do
         vim.lsp.config(server, {})
       end
 
-      -- Enable servers; complex configs are in lsp/*.lua (auto-loaded by Neovim)
+      -- Enable servers; complex configs are in lsp/*.lua
       vim.lsp.enable({
         "ansiblels",
         "basedpyright",

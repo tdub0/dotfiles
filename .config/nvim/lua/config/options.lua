@@ -1,6 +1,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Ensure Mason-installed binaries are on PATH at startup, before any LSP checks
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
+
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write

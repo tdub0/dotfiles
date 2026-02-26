@@ -1,5 +1,4 @@
 vim.lsp.config("harper_ls", {
-  filetypes = { "markdown", "rust", "go", "python" },
   settings = {
     ["harper-ls"] = {
       linters = {

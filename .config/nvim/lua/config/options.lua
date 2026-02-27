@@ -77,3 +77,6 @@ vim.g.loaded_npm_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
+
+-- Helper for Snacks, lualine
+vim.g.have_nerd_font = true

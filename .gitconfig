@@ -23,9 +23,6 @@
     interactive = auto
     grep = auto
 
-[commit]
-    gpgsign = true
-
 [core]
     autocrlf = input
     eol = lf
@@ -42,21 +39,12 @@
 [fetch]
     prune = true
 
-[gpg]
-    format = ssh
-
-[gpg.ssh]
-    allowedSignersFile = ~/.ssh/allowed_signers
-
 [init]
     defaultBranch = main
 
 [merge]
     tool = nvimdiff
     summary = true
-
-[tag]
-    gpgsign = true
 
 [include]
     path = .gitconfig.local

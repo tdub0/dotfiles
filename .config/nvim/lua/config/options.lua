@@ -9,7 +9,7 @@ local opt = vim.opt
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus"
 opt.colorcolumn = "80"
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = "menu,menuone,popup,noselect"
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
@@ -65,7 +65,7 @@ opt.wrap = false -- Disable line wrap
 
 opt.smoothscroll = true
 opt.foldmethod = "expr"
-opt.foldexpr = "v:lsp.foldexpr()"
+opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
 opt.foldtext = ""
 opt.foldlevelstart = 99
 

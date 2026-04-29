@@ -43,15 +43,10 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      -- Shared capabilities: merge nvim-cmp completion items into all servers
-      local capabilities = vim.tbl_deep_extend(
-        "force",
-        vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities()
-      )
+      -- Shared capabilities for all servers
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.positionEncodings = { "utf-8", "utf-16" }
       vim.lsp.config("*", { capabilities = capabilities })
 
@@ -75,35 +70,22 @@ return {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
 
-          map("gd", function()
-            Snacks.picker.lsp_definitions()
-          end, "[g]oto [d]efinition")
-          map("gr", function()
-            Snacks.picker.lsp_references()
-          end, "[g]oto [r]eferences")
-          map("gI", function()
-            Snacks.picker.lsp_implementations()
-          end, "[g]oto [i]mplementation")
-          map("gy", function()
-            Snacks.picker.lsp_type_definitions()
-          end, "[g]oto t[y]pe definition")
+          local builtin = require("telescope.builtin")
+          map("gd", builtin.lsp_definitions, "[g]oto [d]efinition")
+          map("gr", builtin.lsp_references, "[g]oto [r]eferences")
+          map("gI", builtin.lsp_implementations, "[g]oto [i]mplementation")
+          map("gy", builtin.lsp_type_definitions, "[g]oto t[y]pe definition")
           map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
           map("K", vim.lsp.buf.hover, "Hover")
           map("gK", vim.lsp.buf.signature_help, "Signature Help")
           map("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ction")
-          map("<leader>cl", function()
-            Snacks.picker.lsp_config()
-          end, "[l]sp info")
+          map("<leader>cl", "<cmd>lsp<cr>", "[l]sp info")
           map("<leader>cr", vim.lsp.buf.rename, "[r]ename")
           map("<leader>cR", function()
             Snacks.rename.rename_file()
           end, "[r]ename file")
-          map("<leader>ss", function()
-            Snacks.picker.lsp_symbols()
-          end, "[s]ymbols")
-          map("<leader>sS", function()
-            Snacks.picker.lsp_workspace_symbols()
-          end, "[S]ymbols (Workspace)")
+          map("<leader>ss", builtin.lsp_document_symbols, "[s]ymbols")
+          map("<leader>sS", builtin.lsp_workspace_symbols, "[S]ymbols (Workspace)")
           map("<leader>wa", vim.lsp.buf.add_workspace_folder, "[w]orkspace [a]dd folder")
           map("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[w]orkspace [r]emove folder")
           map("<leader>wl", function()
@@ -115,6 +97,11 @@ return {
             map("<leader>uh", function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
             end, "Toggle Inlay Hints")
+          end
+
+          -- Enable native LSP completion
+          if client then
+            vim.lsp.completion.enable(true, event.data.client_id, event.buf, { autotrigger = true })
           end
         end,
       })

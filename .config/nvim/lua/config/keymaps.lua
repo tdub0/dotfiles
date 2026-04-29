@@ -97,6 +97,9 @@ map("n", "<leader>qf", "<cmd>q<cr>", { desc = "Quit file" })
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
+-- undo tree
+map("n", "<leader>ut", "<cmd>Undotree<cr>", { desc = "[u]ndo[t]ree" })
+
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })

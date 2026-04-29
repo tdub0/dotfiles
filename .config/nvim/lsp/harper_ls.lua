@@ -8,7 +8,7 @@ vim.lsp.config("harper_ls", {
         SentenceCapitilization = true,
         UnclosedQuotes = true,
         WrongQuotes = false,
-        LongSentences = true,
+        LongSentences = false,
         RepeatedWords = true,
         Spaces = true,
         Matcher = true,

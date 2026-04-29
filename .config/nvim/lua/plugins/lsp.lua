@@ -107,18 +107,7 @@ return {
       })
 
       -- Minimal configs for servers that need no custom settings.
-      -- lsp/*.lua handles servers that do (clangd, lua_ls, harper_ls, basedpyright, ruff).
-      for _, server in ipairs({
-        "ansiblels",
-        "docker_compose_language_service",
-        "dockerls",
-        "gopls",
-        "rust_analyzer",
-      }) do
-        vim.lsp.config(server, {})
-      end
-
-      -- Enable servers; complex configs are in lsp/*.lua
+      -- Enable servers; lsp/*.lua provides config tables for servers needing custom settings
       vim.lsp.enable({
         "ansiblels",
         "basedpyright",

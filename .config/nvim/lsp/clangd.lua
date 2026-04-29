@@ -1,4 +1,4 @@
-vim.lsp.config("clangd", {
+return {
   cmd = {
     "clangd",
     "--log=error",
@@ -17,4 +17,4 @@ vim.lsp.config("clangd", {
     },
     offsetEncoding = { "utf-16" },
   },
-})
+}

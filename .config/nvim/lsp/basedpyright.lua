@@ -1,4 +1,4 @@
-vim.lsp.config("basedpyright", {
+return {
   settings = {
     basedpyright = {
       disableOrganizeImports = true,
@@ -7,4 +7,4 @@ vim.lsp.config("basedpyright", {
       },
     },
   },
-})
+}

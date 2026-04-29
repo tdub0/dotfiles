@@ -1,4 +1,4 @@
-vim.lsp.config("harper_ls", {
+return {
   settings = {
     ["harper-ls"] = {
       linters = {
@@ -16,4 +16,4 @@ vim.lsp.config("harper_ls", {
       },
     },
   },
-})
+}

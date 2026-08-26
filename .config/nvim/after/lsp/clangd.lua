@@ -10,6 +10,9 @@ return {
     "--limit-results=500",
   },
   capabilities = {
+    general = {
+      positionEncodings = { "utf-16" },
+    },
     textDocument = {
       completion = {
         editsNearCursor = true,

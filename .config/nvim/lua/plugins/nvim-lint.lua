@@ -1,19 +1,18 @@
 return {
   {
     "mfussenegger/nvim-lint",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       local lint = require("lint")
 
-      -- Configure yamllint
       local yamllint = lint.linters.yamllint
       yamllint.args = {
         '-d "{extends: default, rules: {document-start: disable}}"',
         "-",
       }
 
-      -- check current file with ":lua print(vim.bo.filetype)"
+      -- ruff linting is handled by the ruff LSP
       lint.linters_by_ft = {
-        python = { "ruff" },
         sh = { "shellcheck" },
         yaml = { "yamllint" },
       }
@@ -21,7 +20,10 @@ return {
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
         group = lint_augroup,
-        callback = function()
+        callback = function(event)
+          if vim.bo[event.buf].buftype ~= "" then
+            return
+          end
           lint.try_lint()
         end,
       })

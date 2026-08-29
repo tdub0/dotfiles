@@ -1,6 +1,11 @@
--- Ruff handles formatting/linting only; disable hover so other LSPs (e.g. basedpyright) take over
+-- ruff: diagnostics, format, code actions. basedpyright owns hover / types / completion / navigation.
 return {
+  workspace_required = true,
   on_attach = function(client)
     client.server_capabilities.hoverProvider = false
+    client.server_capabilities.definitionProvider = false
+    client.server_capabilities.referencesProvider = false
+    client.server_capabilities.completionProvider = false
+    client.server_capabilities.signatureHelpProvider = false
   end,
 }

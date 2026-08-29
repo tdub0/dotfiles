@@ -28,6 +28,12 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
+  -- Slow links: blobless clones checkout-fetch extra blobs and die at 120s.
+  concurrency = 2,
+  git = {
+    timeout = 600,
+    filter = false,
+  },
   -- automatically check for plugin updates
   checker = {
     notify = false,

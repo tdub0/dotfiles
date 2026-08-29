@@ -14,16 +14,16 @@ return {
       input = { enabled = true },
       lazygit = { enabled = true },
       notifier = { enabled = true },
-      picker = { enabled = true },
+      picker = { enabled = false },
       quickfile = { enabled = true },
       rename = { enabled = true },
       scratch = { enabled = true },
       scope = { enabled = true },
-      scroll = { enabled = true },
+      scroll = { enabled = false },
       statuscolumn = { enabled = true },
       terminal = { enabled = true },
       toggle = { enabled = true },
-      words = { enabled = true },
+      words = { enabled = false },
       zen = { enabled = true },
     },
     keys = {
@@ -42,12 +42,10 @@ return {
         end,
         desc = "Lazygit Log",
       },
-      -- Undo
+      -- Undo (0.12 builtin; snacks picker is disabled in favor of Telescope)
       {
         "<leader>su",
-        function()
-          Snacks.picker.undo()
-        end,
+        "<cmd>Undotree<cr>",
         desc = "Undo History",
       },
       -- Other

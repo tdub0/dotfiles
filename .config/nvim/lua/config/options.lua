@@ -9,7 +9,10 @@ local opt = vim.opt
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus"
 opt.colorcolumn = "80"
-opt.completeopt = "menu,menuone,popup,noselect"
+opt.completeopt = "menu,menuone,popup,noselect,nearest"
+opt.autocomplete = true
+opt.complete:append("o^20")
+opt.autocompletedelay = 60
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
@@ -37,7 +40,7 @@ opt.pumblend = 10 -- Pseudo transparency, 10%
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
 opt.scrolloff = 4 -- Lines of context
-opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
+opt.sessionoptions = { "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 4 -- Size of an indent
 opt.shortmess:append({ W = true, I = true, c = true, C = true })
@@ -65,7 +68,7 @@ opt.wrap = false -- Disable line wrap
 
 opt.smoothscroll = true
 opt.foldmethod = "expr"
-opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldtext = ""
 opt.foldlevelstart = 99
 

@@ -41,6 +41,18 @@ return {
         "xml",
         "yaml",
       })
+
+      -- nvim-treesitter `main` does not start highlighting on its own.
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("tdub_treesitter", { clear = true }),
+        callback = function(event)
+          if not pcall(vim.treesitter.start, event.buf) then
+            return
+          end
+          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          vim.wo.foldmethod = "expr"
+        end,
+      })
     end,
   },
 

@@ -13,12 +13,9 @@ return {
         formatters_by_ft = {
           lua = { "stylua" },
           python = {
-            -- to fix auto-fixable lint errors
             "ruff_fix",
-            -- to run ruff formatter
-            "ruff_format",
-            -- to organize imports
             "ruff_organize_imports",
+            lsp_format = "prefer",
           },
           sh = { "shfmt" },
           yaml = { "yamlfmt" },

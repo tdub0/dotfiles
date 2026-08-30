@@ -42,12 +42,6 @@ return {
         end,
         desc = "Lazygit Log",
       },
-      -- Undo (0.12 builtin; snacks picker is disabled in favor of Telescope)
-      {
-        "<leader>su",
-        "<cmd>Undotree<cr>",
-        desc = "Undo History",
-      },
       -- Other
       {
         "<leader>z",

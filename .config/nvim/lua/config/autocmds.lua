@@ -36,10 +36,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function(event)
     local exclude = { "gitcommit" }
     local buf = event.buf
-    if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].lazyvim_last_loc then
+    if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].tdub_last_loc then
       return
     end
-    vim.b[buf].lazyvim_last_loc = true
+    vim.b[buf].tdub_last_loc = true
     local mark = vim.api.nvim_buf_get_mark(buf, '"')
     local lcount = vim.api.nvim_buf_line_count(buf)
     if mark[1] > 0 and mark[1] <= lcount then
@@ -52,20 +52,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
-    "PlenaryTestPopup",
-    "grug-far",
     "help",
-    "lspinfo",
     "notify",
     "qf",
-    "spectre_panel",
-    "startuptime",
-    "tsplayground",
-    "neotest-output",
     "checkhealth",
-    "neotest-summary",
-    "neotest-output-panel",
-    "dbout",
     "gitsigns-blame",
   },
   callback = function(event)
@@ -118,10 +108,21 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- Auto associate gitlab yaml files with gitlab_ls
+-- GitLab CI uses the yaml.gitlab filetype. No gitlab-ci-ls / yamlls in this config.
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.gitlab-ci*.{yml,yaml}",
   callback = function()
     vim.bo.filetype = "yaml.gitlab"
   end,
+})
+
+-- Ansible playbooks / role tasks so ansible-lint and ansiblels attach.
+vim.filetype.add({
+  pattern = {
+    [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/tasks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
+    [".*/group_vars/.*%.ya?ml"] = "yaml.ansible",
+    [".*/host_vars/.*%.ya?ml"] = "yaml.ansible",
+  },
 })

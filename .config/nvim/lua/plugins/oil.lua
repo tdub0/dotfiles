@@ -56,7 +56,6 @@ return {
       -- Preserve your exact leader mappings
       local map = vim.keymap.set
       map("n", "<leader>et", "<cmd>Oil --float<cr>", { desc = "[e]xplorer [t]oggle" })
-      map("n", "<leader>ei", "<cmd>Oil --float<cr>", { desc = "[e]xplorer [i]nit" })
       map("n", "<leader>ef", "<cmd>Oil<cr>", { desc = "[e]xplorer cwd [f]iles" })
     end,
   },

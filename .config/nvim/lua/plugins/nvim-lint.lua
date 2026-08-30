@@ -15,6 +15,7 @@ return {
       lint.linters_by_ft = {
         sh = { "shellcheck" },
         yaml = { "yamllint" },
+        ["yaml.ansible"] = { "ansible_lint", "yamllint" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

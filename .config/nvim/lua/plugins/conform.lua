@@ -1,7 +1,23 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile" },
+    keys = {
+      {
+        "<leader>cf",
+        function()
+          require("conform").format({
+            lsp_format = "fallback",
+            quiet = false,
+            timeout_ms = 3000,
+          })
+        end,
+        mode = { "n", "v" },
+        desc = "[c]ode [f]ormat file or range",
+      },
+      { "<leader>uD", "<cmd>FormatDisable<CR>", desc = "[D]isable formatting" },
+      { "<leader>uE", "<cmd>FormatEnable<CR>", desc = "[E]nable formatting" },
+    },
     config = function()
       local conform = require("conform")
       conform.setup({
@@ -46,24 +62,6 @@ return {
       end, {
         desc = "Re-enable autoformat-on-save",
       })
-
-      vim.keymap.set("n", "<leader>uD", "<cmd>FormatDisable<CR>", { desc = "[D]isable formatting" })
-      vim.keymap.set("n", "<leader>uE", "<cmd>FormatEnable<CR>", { desc = "[E]nable formatting" })
-
-      vim.keymap.set({ "n", "v" }, "<leader>cf", function()
-        conform.format({
-          lsp_format = "fallback",
-          quiet = false,
-          timeout_ms = 3000,
-        })
-      end, { desc = "[c]ode [f]ormat file or range" })
-      vim.keymap.set({ "n", "v" }, "<leader>f", function()
-        conform.format({
-          lsp_format = "fallback",
-          quiet = false,
-          timeout_ms = 3000,
-        })
-      end, { desc = "[f]ormat file or range" })
     end,
   },
 }

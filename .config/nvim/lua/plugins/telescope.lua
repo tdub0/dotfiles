@@ -50,6 +50,7 @@ return {
       telescope.setup({
         defaults = {
           path_display = { "truncate" },
+          file_ignore_patterns = { "%.git/" },
           mappings = {
             i = {
               ["<C-p>"] = actions.move_selection_previous,

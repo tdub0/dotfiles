@@ -1,11 +1,10 @@
 return {
-  -- Session management. This saves your session in the background,
-  -- keeping track of open buffers, window arrangement, and more.
-  -- You can restore sessions when returning through the dashboard.
+  -- Session management. Saves cwd, tabs, windows, and folds (not hidden buffers).
+  -- Restore from the dashboard or the keymaps below.
   {
     "folke/persistence.nvim",
     event = "BufReadPre",
-    opts = { options = vim.opt.sessionoptions:get() },
+    opts = {},
     keys = {
       {
         "<leader>qs",

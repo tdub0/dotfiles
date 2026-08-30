@@ -20,8 +20,6 @@ return {
           { "<leader>u", group = "undo/ui" },
           { "<leader>w", group = "windows" },
           { "<leader>x", group = "quickfix" },
-          { "<leader>]", group = "next" },
-          { "<leader>[", group = "prev" },
           { "<leader><tab>", group = "tabs" },
         },
       },

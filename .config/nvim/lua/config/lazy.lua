@@ -24,8 +24,9 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  -- GitHub origin on this WAN is slow. Blobless clones finish the pack then
-  -- die on checkout. Two concurrent clones share that pipe.
+  -- GitHub origin on this WAN is slow
+  -- Blobless clones finish the pack then die on checkout
+  -- Two concurrent clones share that pipe
   concurrency = 2,
   git = {
     timeout = 600,

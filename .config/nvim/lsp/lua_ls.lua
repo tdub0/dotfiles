@@ -1,4 +1,5 @@
--- lazydev injects the Neovim API. Do not add nvim_get_runtime_file here.
+-- lazydev injects the Neovim API
+-- Do not add nvim_get_runtime_file here
 return {
   workspace_required = true,
   settings = {

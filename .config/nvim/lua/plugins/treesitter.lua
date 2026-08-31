@@ -44,7 +44,8 @@ return {
         "yaml",
       })
 
-      -- nvim-treesitter main does not start highlighting. Start it per buffer.
+      -- nvim-treesitter main does not start highlighting
+      -- Start it per buffer
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("tdub_treesitter", { clear = true }),
         callback = function(event)

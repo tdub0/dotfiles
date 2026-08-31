@@ -1,5 +1,6 @@
 return {
-  -- Persistence stores cwd, tabs, windows, and folds. It skips hidden buffers.
+  -- Persistence stores cwd, tabs, windows, and folds
+  -- It skips hidden buffers
   {
     "folke/persistence.nvim",
     event = "BufReadPre",

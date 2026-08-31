@@ -18,9 +18,10 @@ return {
     },
     config = function(_, opts)
       require("mason").setup(opts)
-      -- GitHub-release packages need no extra toolchain. Ask for npm/go
-      -- packages only when those compilers exist so a host without them
-      -- does not error on startup. vim.lsp.enable still lists the servers.
+      -- GitHub-release packages need no extra toolchain
+      -- Ask for npm/go packages only when those compilers exist
+      -- A host without them does not error on startup
+      -- vim.lsp.enable still lists the servers
       local ensure_installed = {
         "ansible-lint",
         "clangd",

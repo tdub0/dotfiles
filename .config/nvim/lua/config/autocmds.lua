@@ -88,7 +88,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
--- Skip URI buffers (oil://, fugitive://). mkdir on a real path only.
+-- Skip URI buffers (oil://, fugitive://)
+-- mkdir on a real path only
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = augroup("auto_create_dir"),
   callback = function(event)
@@ -100,7 +101,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- GitLab CI is yaml.gitlab. This config has no gitlab-ci-ls.
+-- GitLab CI is yaml.gitlab
+-- This config has no gitlab-ci-ls
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.gitlab-ci*.{yml,yaml}",
   callback = function()
@@ -108,7 +110,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
--- ansible-lint and ansiblels attach to yaml.ansible, not plain yaml.
+-- ansible-lint and ansiblels attach to yaml.ansible, not plain yaml
 vim.filetype.add({
   pattern = {
     [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",

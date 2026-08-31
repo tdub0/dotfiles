@@ -2,7 +2,8 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    -- Telescope ships no useful tags. Track HEAD.
+    -- Telescope ships no useful tags
+    -- Track HEAD
     version = false,
     dependencies = {
       "nvim-lua/plenary.nvim",

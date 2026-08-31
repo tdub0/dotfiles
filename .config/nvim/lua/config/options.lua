@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Mason binaries must be on PATH before FileType starts language servers.
+-- Mason binaries must be on PATH before FileType starts language servers
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
 
 local opt = vim.opt
@@ -36,7 +36,7 @@ opt.pumblend = 10
 opt.pumheight = 10
 opt.relativenumber = true
 opt.scrolloff = 4
--- Omit "buffers" so persistence does not reopen every hidden file and its LSPs.
+-- Omit "buffers" so persistence does not reopen every hidden file and its LSPs
 opt.sessionoptions = { "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 opt.shiftround = true
 opt.shiftwidth = 4
@@ -64,7 +64,7 @@ opt.winminwidth = 5
 opt.wrap = false
 opt.smoothscroll = true
 
--- Native insert completion uses omnifunc (o) with a 20-item cap.
+-- Native insert completion uses omnifunc (o) with a 20-item cap
 opt.completeopt = "menu,menuone,popup,noselect,nearest"
 opt.autocomplete = true
 opt.complete:append("o^20")

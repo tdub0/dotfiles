@@ -1,5 +1,5 @@
--- ruff formats, lints, and offers code actions.
--- basedpyright owns hover, types, completion, and navigation.
+-- ruff formats, lints, and offers code actions
+-- basedpyright owns hover, types, completion, and navigation
 return {
   workspace_required = true,
   on_attach = function(client)

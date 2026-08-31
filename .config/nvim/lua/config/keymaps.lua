@@ -8,7 +8,8 @@ map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent =
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
--- Leader hjkl moves between windows. Harpoon uses Ctrl-hjkl.
+-- Leader hjkl moves between windows
+-- Harpoon uses Ctrl-hjkl
 map("n", "<leader>h", "<C-w>h", { desc = "Go to left window", remap = true })
 map("n", "<leader>j", "<C-w>j", { desc = "Go to lower window", remap = true })
 map("n", "<leader>k", "<C-w>k", { desc = "Go to upper window", remap = true })
@@ -41,7 +42,7 @@ map(
   { desc = "Redraw / clear hlsearch / diff update" }
 )
 
--- n/N follow the search direction, not the key.
+-- n/N follow the search direction, not the key
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
 map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })

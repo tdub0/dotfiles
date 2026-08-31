@@ -1,5 +1,5 @@
--- Keep --background-index for cross-TU navigation on large C/C++ trees.
--- Store PCH on disk and run the index at low priority to bound RSS.
+-- Keep --background-index for cross-TU navigation on large C/C++ trees
+-- Store PCH on disk and run the index at low priority to bound RSS
 return {
   workspace_required = true,
   cmd = {

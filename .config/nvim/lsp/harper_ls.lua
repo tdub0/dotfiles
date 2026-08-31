@@ -1,4 +1,5 @@
--- Prose only. Skip code filetypes so harper does not sit on Python or C.
+-- Prose only
+-- Skip code filetypes so harper does not sit on Python or C
 return {
   filetypes = { "gitcommit", "markdown", "text", "typst" },
   on_attach = function(client)

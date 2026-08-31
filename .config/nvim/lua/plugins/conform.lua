@@ -28,7 +28,8 @@ return {
         },
         formatters_by_ft = {
           lua = { "stylua" },
-          -- ruff CLI fixes imports. ruff LSP formats.
+          -- ruff CLI fixes imports
+          -- ruff LSP formats
           python = {
             "ruff_fix",
             "ruff_organize_imports",

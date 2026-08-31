@@ -1,5 +1,5 @@
--- Refuse to start a server with $HOME as the workspace.
--- Force-stop hung servers 3s after :qa.
+-- Refuse to start a server with $HOME as the workspace
+-- Force-stop hung servers 3s after :qa
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.general = capabilities.general or {}
 capabilities.general.positionEncodings = { "utf-8", "utf-16" }
@@ -44,7 +44,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end, { buffer = event.buf, desc = "LSP: Toggle Inlay Hints" })
     end
 
-    -- Bind once. ruff and basedpyright both attach to Python.
+    -- Bind once
+    -- ruff and basedpyright both attach to Python
     if vim.b[event.buf].tdub_lsp_keys then
       return
     end

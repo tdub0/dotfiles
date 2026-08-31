@@ -1,5 +1,3 @@
--- after/lsp loads after nvim-lspconfig lsp/*.lua
--- vim.tbl_deep_extend("force") lets later runtimepath files win
 -- Keep --background-index for cross-TU navigation on large C/C++ trees
 -- Store PCH on disk and run the index at low priority to bound RSS
 return {

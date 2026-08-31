@@ -1,12 +1,13 @@
 -- Refuse to start a server with $HOME as the workspace
--- Force-stop hung servers 3s after :qa
+-- true force-stops LSP on :qa
+-- A millisecond timeout makes Nvim wait that long before quit
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.general = capabilities.general or {}
 capabilities.general.positionEncodings = { "utf-8", "utf-16" }
 vim.lsp.config("*", {
   capabilities = capabilities,
   workspace_required = true,
-  exit_timeout = 3000,
+  exit_timeout = true,
 })
 
 local sev = vim.diagnostic.severity

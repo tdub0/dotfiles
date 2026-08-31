@@ -1,5 +1,4 @@
 return {
-  -- Show context of the current function
   {
     "nvim-treesitter/nvim-treesitter-context",
     opts = { mode = "cursor", max_lines = 2 },
@@ -45,7 +44,7 @@ return {
         "yaml",
       })
 
-      -- nvim-treesitter `main` does not start highlighting on its own.
+      -- nvim-treesitter main does not start highlighting. Start it per buffer.
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("tdub_treesitter", { clear = true }),
         callback = function(event)
@@ -68,7 +67,7 @@ return {
       local sel = require("nvim-treesitter-textobjects.select")
       local map = vim.keymap.set
 
-      -- Move to next/previous function or class
+
       map({ "n", "x", "o" }, "]f", function()
         move.goto_next_start("@function.outer", "textobjects")
       end)
@@ -94,7 +93,7 @@ return {
         move.goto_previous_end("@class.outer", "textobjects")
       end)
 
-      -- Select text objects
+
       map({ "x", "o" }, "aa", function()
         sel.select_textobject("@parameter.outer", "textobjects")
       end)

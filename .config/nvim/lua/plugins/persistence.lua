@@ -1,6 +1,5 @@
 return {
-  -- Session management. Saves cwd, tabs, windows, and folds (not hidden buffers).
-  -- Restore from the dashboard or the keymaps below.
+  -- Persistence stores cwd, tabs, windows, and folds. It skips hidden buffers.
   {
     "folke/persistence.nvim",
     event = "BufReadPre",

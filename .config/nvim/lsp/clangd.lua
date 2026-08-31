@@ -1,6 +1,5 @@
--- Keep --background-index: large C/C++ trees need the persistent index for
--- cross-TU navigation. pch-storage=disk and low index priority keep RSS down
--- while the index builds.
+-- Keep --background-index for cross-TU navigation on large C/C++ trees.
+-- Store PCH on disk and run the index at low priority to bound RSS.
 return {
   workspace_required = true,
   cmd = {

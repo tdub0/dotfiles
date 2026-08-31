@@ -2,7 +2,8 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    version = false, -- telescope did only one release, so use HEAD for now
+    -- Telescope ships no useful tags. Track HEAD.
+    version = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       {
@@ -12,22 +13,21 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      -- Top pickers
       { "<leader>,", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch Buffer" },
       { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      -- Find
+
       { "<leader>sb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "[s]earch [b]uffers" },
       { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "[s]earch [f]iles" },
       { "<leader>sgf", "<cmd>Telescope git_files<cr>", desc = "[s]earch [g]it [f]iles" },
       { "<leader>sr", "<cmd>Telescope oldfiles<cr>", desc = "[s]earch [r]ecent" },
-      -- Git
+
       { "<leader>sgc", "<cmd>Telescope git_commits<cr>", desc = "[s]earch [g]it [c]ommits" },
       { "<leader>sgs", "<cmd>Telescope git_status<cr>", desc = "[s]earch [g]it [s]tatus" },
-      -- Grep
+
       { "<leader>s/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "[s]earch current buffer" },
       { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "[s]earch [w]ord" },
-      -- Search
+
       { '<leader>s"', "<cmd>Telescope registers<cr>", desc = "[s]earch registers" },
       { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "[s]earch [a]uto commands" },
       { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "[s]earch [c]ommand history" },

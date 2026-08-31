@@ -28,6 +28,7 @@ return {
         },
         formatters_by_ft = {
           lua = { "stylua" },
+          -- ruff CLI fixes imports. ruff LSP formats.
           python = {
             "ruff_fix",
             "ruff_organize_imports",
@@ -37,7 +38,6 @@ return {
           yaml = { "yamlfmt" },
         },
         format_on_save = function(bufnr)
-          -- Disable with a global or buffer-local variable
           if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
             return
           end
@@ -47,7 +47,6 @@ return {
 
       vim.api.nvim_create_user_command("FormatDisable", function(args)
         if args.bang then
-          -- FormatDisable! will disable formatting just for this buffer
           vim.b.disable_autoformat = true
         else
           vim.g.disable_autoformat = true

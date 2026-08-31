@@ -2,7 +2,6 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("tdub_" .. name, { clear = true })
 end
 
--- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   group = augroup("checktime"),
   callback = function()
@@ -12,7 +11,6 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   end,
 })
 
--- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function()
@@ -20,7 +18,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   group = augroup("resize_splits"),
   callback = function()
@@ -30,7 +27,6 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
--- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup("last_loc"),
   callback = function(event)
@@ -48,7 +44,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
@@ -68,7 +63,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- make it easier to close man-files when opened inline
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("man_unlisted"),
   pattern = { "man" },
@@ -77,7 +71,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
   pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
@@ -87,7 +80,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Fix conceallevel for json files
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = augroup("json_conceal"),
   pattern = { "json", "jsonc", "json5" },
@@ -96,7 +88,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
--- Auto create dir when saving a file, in case some intermediate directory does not exist
+-- Skip URI buffers (oil://, fugitive://). mkdir on a real path only.
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = augroup("auto_create_dir"),
   callback = function(event)
@@ -108,7 +100,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- GitLab CI uses the yaml.gitlab filetype. No gitlab-ci-ls / yamlls in this config.
+-- GitLab CI is yaml.gitlab. This config has no gitlab-ci-ls.
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.gitlab-ci*.{yml,yaml}",
   callback = function()
@@ -116,7 +108,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
--- Ansible playbooks / role tasks so ansible-lint and ansiblels attach.
+-- ansible-lint and ansiblels attach to yaml.ansible, not plain yaml.
 vim.filetype.add({
   pattern = {
     [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",

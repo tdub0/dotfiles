@@ -11,7 +11,7 @@ return {
         "-",
       }
 
-      -- ruff linting is handled by the ruff LSP
+      -- ruff LSP owns Python lint. nvim-lint covers shell, yaml, and ansible.
       lint.linters_by_ft = {
         sh = { "shellcheck" },
         yaml = { "yamllint" },

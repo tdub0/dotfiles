@@ -1,5 +1,3 @@
--- Install package manager
--- `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -22,25 +20,23 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
---  configure plugins using lazy
 require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  -- Slow links: blobless clones checkout-fetch extra blobs and die at 120s.
+  -- GitHub origin on this WAN is slow. Blobless clones finish the pack then
+  -- die on checkout. Two concurrent clones share that pipe.
   concurrency = 2,
   git = {
     timeout = 600,
     filter = false,
   },
-  -- automatically check for plugin updates
   checker = {
     notify = false,
   },
   rocks = {
     hererocks = false,
   },
-  -- colorscheme that will be used when installing plugins
   install = { colorscheme = { "catppuccin" } },
   change_detection = {
     notify = false,

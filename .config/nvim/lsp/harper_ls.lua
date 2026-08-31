@@ -1,5 +1,5 @@
+-- Prose only. Skip code filetypes so harper does not sit on Python or C.
 return {
-  -- Grammar checker only; do not attach to code filetypes.
   filetypes = { "gitcommit", "markdown", "text", "typst" },
   on_attach = function(client)
     client.server_capabilities.completionProvider = false

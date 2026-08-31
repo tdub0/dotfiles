@@ -14,6 +14,7 @@ return {
       input = { enabled = true },
       lazygit = { enabled = true },
       notifier = { enabled = true },
+      -- Telescope owns search. Keep picker off so Snacks does not duplicate it.
       picker = { enabled = false },
       quickfile = { enabled = true },
       rename = { enabled = true },
@@ -27,7 +28,6 @@ return {
       zen = { enabled = true },
     },
     keys = {
-      -- Git
       {
         "<leader>gg",
         function()
@@ -42,7 +42,6 @@ return {
         end,
         desc = "Lazygit Log",
       },
-      -- Other
       {
         "<leader>z",
         function()

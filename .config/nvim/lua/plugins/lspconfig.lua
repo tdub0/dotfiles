@@ -1,6 +1,6 @@
 -- nvim-lspconfig is data
--- Server tables live in its lsp/ directory and merge with ~/.config/nvim/lsp/*.lua
--- Load it at startup so vim.lsp.enable finds them
+-- lsp/*.lua files load after ~/.config/nvim/lsp and overwrite with force
+-- Put overrides in after/lsp so they win
 return {
   {
     "neovim/nvim-lspconfig",

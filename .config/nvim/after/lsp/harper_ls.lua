@@ -1,3 +1,4 @@
+-- after/lsp loads after nvim-lspconfig, which lists many code filetypes
 -- Prose only
 -- Skip code filetypes so harper does not sit on Python or C
 return {

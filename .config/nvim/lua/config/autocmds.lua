@@ -111,6 +111,16 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- ansible-lint and ansiblels attach to yaml.ansible, not plain yaml
+
+-- Native 'autocomplete' overlays Telescope's prompt
+-- j/k would move in the popup instead of the result list
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("telescope_no_autocomplete"),
+  pattern = "TelescopePrompt",
+  callback = function()
+    vim.opt_local.autocomplete = false
+  end,
+})
 vim.filetype.add({
   pattern = {
     [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",

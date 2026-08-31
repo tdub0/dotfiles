@@ -60,8 +60,8 @@ return {
       end, { desc = "[c]ode [f]ormat file or range" })
       vim.keymap.set({ "n", "v" }, "<leader>f", function()
         conform.format({
-          lsp_format = "fallback", --
-          quiet = false, --
+          lsp_format = "fallback",
+          quiet = false,
           timeout_ms = 3000,
         })
       end, { desc = "[f]ormat file or range" })

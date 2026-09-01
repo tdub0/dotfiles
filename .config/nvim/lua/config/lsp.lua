@@ -1,6 +1,5 @@
 -- Refuse to start a server with $HOME as the workspace
--- true force-stops LSP on :qa
--- A millisecond timeout makes Nvim wait that long before quit
+-- Force-stop LSP on :qa so quit does not wait
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.general = capabilities.general or {}
 capabilities.general.positionEncodings = { "utf-8", "utf-16" }
@@ -34,11 +33,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("tdub-lsp-attach", { clear = true }),
   callback = function(event)
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if
-      client
-      and client:supports_method("textDocument/inlayHint")
-      and not vim.b[event.buf].tdub_lsp_inlay
-    then
+    if client and client:supports_method("textDocument/inlayHint") and not vim.b[event.buf].tdub_lsp_inlay then
       vim.b[event.buf].tdub_lsp_inlay = true
       vim.keymap.set("n", "<leader>uh", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))

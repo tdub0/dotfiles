@@ -1,3 +1,4 @@
+-- Turn off format here so ruff owns it
 return {
   workspace_required = true,
   settings = {

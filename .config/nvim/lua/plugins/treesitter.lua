@@ -68,7 +68,6 @@ return {
       local sel = require("nvim-treesitter-textobjects.select")
       local map = vim.keymap.set
 
-
       map({ "n", "x", "o" }, "]f", function()
         move.goto_next_start("@function.outer", "textobjects")
       end)
@@ -93,7 +92,6 @@ return {
       map({ "n", "x", "o" }, "[C", function()
         move.goto_previous_end("@class.outer", "textobjects")
       end)
-
 
       map({ "x", "o" }, "aa", function()
         sel.select_textobject("@parameter.outer", "textobjects")

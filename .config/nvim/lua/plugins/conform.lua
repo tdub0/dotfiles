@@ -51,6 +51,9 @@ return {
         desc = "Re-enable autoformat-on-save",
       })
 
+      -- Set maps here, not in lazy keys
+      -- lazy.nvim's key loader drops Visual before format runs
+      -- C/C++ has no CLI formatter, so fallback uses clangd range format
       vim.keymap.set({ "n", "v" }, "<leader>cf", function()
         conform.format({
           lsp_format = "fallback",

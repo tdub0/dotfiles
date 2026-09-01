@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   end,
 })
 
+-- Flash the yanked range
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function()
@@ -27,6 +28,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
+-- Restore the cursor to the last position in this file
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup("last_loc"),
   callback = function(event)
@@ -44,6 +46,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+-- q closes these helper windows
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
@@ -71,6 +74,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Wrap and spell-check prose
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
   pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
@@ -80,6 +84,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Keep JSON quotes visible
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = augroup("json_conceal"),
   pattern = { "json", "jsonc", "json5" },
@@ -110,8 +115,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
--- ansible-lint and ansiblels attach to yaml.ansible, not plain yaml
-
 -- Native 'autocomplete' overlays Telescope's prompt
 -- j/k would move in the popup instead of the result list
 vim.api.nvim_create_autocmd("FileType", {
@@ -121,6 +124,8 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.autocomplete = false
   end,
 })
+
+-- ansible-lint and ansiblels attach to yaml.ansible, not plain yaml
 vim.filetype.add({
   pattern = {
     [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",

@@ -70,6 +70,7 @@ opt.autocomplete = true
 opt.complete:append("o^20")
 opt.autocompletedelay = 60
 
+-- Treesitter folds start open
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldtext = ""
@@ -77,6 +78,7 @@ opt.foldlevelstart = 99
 
 vim.g.markdown_recommended_style = 0
 
+-- Skip unused remote providers
 vim.g.loaded_npm_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0

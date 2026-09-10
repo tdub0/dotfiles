@@ -16,6 +16,7 @@ return {
         },
         formatters_by_ft = {
           lua = { "stylua" },
+          markdown = { "prettierd" },
           -- ruff CLI fixes imports
           -- ruff LSP formats
           python = {

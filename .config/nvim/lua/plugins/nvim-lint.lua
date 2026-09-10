@@ -11,9 +11,17 @@ return {
         "-",
       }
 
+      local markdownlint = lint.linters.markdownlint
+      markdownlint.args = {
+        "--disable",
+        "MD013",
+        "--stdin",
+      }
+
       -- ruff LSP owns Python lint
       -- nvim-lint covers shell, yaml, and ansible
       lint.linters_by_ft = {
+        markdown = { "markdownlint" },
         sh = { "shellcheck" },
         yaml = { "yamllint" },
         ["yaml.ansible"] = { "ansible_lint", "yamllint" },

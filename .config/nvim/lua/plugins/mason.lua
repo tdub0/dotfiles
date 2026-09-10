@@ -24,15 +24,15 @@ return {
       -- vim.lsp.enable still lists the servers
       local ensure_installed = {
         "ansible-lint",
+        "basedpyright",
         "clangd",
         "harper-ls",
         "lua-language-server",
-        "stylua",
-        "basedpyright",
         "ruff",
         "rust-analyzer",
         "shellcheck",
         "shfmt",
+        "stylua",
         "yamlfmt",
         "yamllint",
       }
@@ -41,6 +41,8 @@ return {
           "ansible-language-server",
           "docker-compose-language-service",
           "dockerfile-language-server",
+          "markdownlint",
+          "prettierd",
         })
       end
       if vim.fn.executable("go") == 1 then

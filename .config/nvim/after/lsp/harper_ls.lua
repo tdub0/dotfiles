@@ -10,8 +10,12 @@ return {
       linters = {
         AnA = true,
         CorrectNumberSuffix = true,
+        ExpandConfiguration = false,
+        ExpandCoordinate = false,
         LongSentences = false,
         Matcher = true,
+        NumericRangeEnDash = false,
+        OrthographicConsistency = false,
         RepeatedWords = true,
         SentenceCapitalization = false,
         Spaces = true,

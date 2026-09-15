@@ -70,15 +70,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.lsp.enable({
-  "ansiblels",
+-- Enable a server only when its cmd is on PATH
+-- npm/go Mason packages are absent on hosts without those toolchains
+local servers = {
   "basedpyright",
   "clangd",
-  "docker_compose_language_service",
-  "dockerls",
-  "gopls",
   "harper_ls",
   "lua_ls",
   "ruff",
   "rust_analyzer",
-})
+}
+local optional = {
+  { "ansiblels", "ansible-language-server" },
+  { "docker_compose_language_service", "docker-compose-langserver" },
+  { "dockerls", "docker-langserver" },
+  { "gopls", "gopls" },
+}
+for _, item in ipairs(optional) do
+  if vim.fn.executable(item[2]) == 1 then
+    servers[#servers + 1] = item[1]
+  end
+end
+vim.lsp.enable(servers)

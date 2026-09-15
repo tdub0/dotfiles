@@ -20,12 +20,15 @@ return {
 
       -- ruff LSP owns Python lint
       -- nvim-lint covers shell, yaml, and ansible
+      -- markdownlint is an npm package and stays off without that binary
       lint.linters_by_ft = {
-        markdown = { "markdownlint" },
         sh = { "shellcheck" },
         yaml = { "yamllint" },
         ["yaml.ansible"] = { "ansible_lint", "yamllint" },
       }
+      if vim.fn.executable("markdownlint") == 1 then
+        lint.linters_by_ft.markdown = { "markdownlint" }
+      end
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {

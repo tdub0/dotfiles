@@ -16,7 +16,6 @@ return {
         },
         formatters_by_ft = {
           lua = { "stylua" },
-          markdown = { "prettierd" },
           -- ruff CLI fixes imports
           -- ruff LSP formats
           python = {
@@ -34,6 +33,12 @@ return {
           return { lsp_format = "fallback", quiet = false, timeout_ms = 3000 }
         end,
       })
+
+      -- prettierd is an npm package
+      -- Skip it on hosts without that binary
+      if vim.fn.executable("prettierd") == 1 then
+        conform.formatters_by_ft.markdown = { "prettierd" }
+      end
 
       vim.api.nvim_create_user_command("FormatDisable", function(args)
         if args.bang then

@@ -60,13 +60,6 @@ return {
       -- Set maps here, not in lazy keys
       -- lazy.nvim's key loader drops Visual before format runs
       -- C/C++ has no CLI formatter, so fallback uses clangd range format
-      vim.keymap.set({ "n", "v" }, "<leader>cf", function()
-        conform.format({
-          lsp_format = "fallback",
-          quiet = false,
-          timeout_ms = 3000,
-        })
-      end, { desc = "[c]ode [f]ormat file or range" })
       vim.keymap.set({ "n", "v" }, "<leader>f", function()
         conform.format({
           lsp_format = "fallback",

@@ -81,7 +81,6 @@ map("n", "<leader>qw", "<cmd>wq<cr>", { desc = "Quit and save" })
 map("n", "<leader>qf", "<cmd>q<cr>", { desc = "Quit file" })
 
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
-map("n", "<leader>ut", "<cmd>Undotree<cr>", { desc = "[u]ndo[t]ree" })
 
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })

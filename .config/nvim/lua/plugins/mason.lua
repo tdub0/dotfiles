@@ -21,7 +21,7 @@ return {
       -- GitHub-release packages need no extra toolchain
       -- Ask for npm/go packages only when those compilers exist
       -- A host without them does not error on startup
-      -- vim.lsp.enable still lists the servers
+      -- vim.lsp.enable also skips those servers unless the cmd exists
       local ensure_installed = {
         "ansible-lint",
         "basedpyright",

@@ -22,7 +22,7 @@ return {
       scope = { enabled = true },
       scratch = { enabled = false },
       scroll = { enabled = false },
-      statuscolumn = { enabled = true },
+      statuscolumn = { enabled = false },
       terminal = { enabled = false },
       toggle = { enabled = false },
       words = { enabled = false },
